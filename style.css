@@ -145,3 +145,52 @@ body {
     background-color: #0088cc; /* Bleu légèrement plus foncé */
     box-shadow: 0 0 8px #00aaff;
 }
+
+/* 🔻 MEDIA QUERIES POUR ADAPTATION RESPONSIVE 🔻 */
+
+/* 📱 Mode smartphone (moins de 768px) */
+@media screen and (max-width: 768px) {
+    #catalogue {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .film {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .film img {
+        height: auto;
+    }
+
+    .video-container {
+        width: 95%;
+    }
+
+    .season-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .season-button {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+
+    #search {
+        width: 90%;
+    }
+}
+
+/* 📺 Mode tablette (moins de 1024px) */
+@media screen and (max-width: 1024px) {
+    #catalogue {
+        width: 90%;
+    }
+
+    .video-container {
+        width: 85%;
+    }
+}

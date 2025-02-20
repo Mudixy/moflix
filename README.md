@@ -18,3 +18,5 @@
 • Ajout du système de collections
 • Correction d'un bug majeur lié à la barre de recherche dynamique
 • Modifications du design sur certaines pages
+
+

@@ -26,7 +26,7 @@ function displayMovies(filmsList) {
         });
         catalogue.appendChild(filmElement);
     });
-}
+};
 
 searchInput.addEventListener("input", () => {
     const searchTerm = searchInput.value.toLowerCase();

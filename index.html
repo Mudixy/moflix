@@ -3,164 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>•StreamWorld - Catalogue</title>
+    <title>•StreamWorld - Le meilleur est ici !</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <h1 style="text-align: center;">•StreamWorld - Catalogue</h1>
-        <h4 style="text-align: center; color: gray">Films, séries, émissions... - Ne cherchez plus, le meilleur est ici !</h4>
-        <input type="text" id="search" placeholder="Rechercher un film ou une série...">
+        <nav>
+            <div class="logo">
+                <img src="logo.png" alt="Miru">
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="catalogue.html">Catalogue</a>
+            </div>
+        </nav>
     </header>
-    <main id="catalogue">
 
-        <div class="film"> <!--À fond-->
-            <a href="films/afond.html">
-                <img src="https://image.tmdb.org/t/p/original/onCQ5IhUEFuantJuoJE2JtlPiAq.jpg" alt="À fond">
-                <p>À fond</p>
-            </a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="movie-info">
+                <h1>3 JOURS MAX</h1>
+                <p>Après avoir prouvé à tous qu'il est un policier hors pair, Rayan s'inscrit au concours d'agent secret. Il se donne à fond dans les épreuves mais le couperet tombe : il est recalé. Rayan n'a pas le temps de pleurer sur son sort, sa grand-mère et Lynda sont enlevées par d'anciens associés du rat.</p>
+                <div class="hero-buttons">
+                    <a href="films/3joursmax.html">
+                    <button class="btn-watch">
+                        <i class="fas fa-play"></i>
+                        Regarder
+                    </button>
+                    </a>
+                    <a href="https://youtu.be/qPuMbG5ByO8?si=DDOeJezolAjGTyxj">
+                        <button class="btn-add">Voir le trailer</button>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="film"> <!--Ad Vitam-->
-            <a href="films/advitam.html">
-                <img src="https://image.tmdb.org/t/p/original/dOpSxmD3FWfl6SK8SLXw9uwcO05.jpg" alt="Ad Vitam">
-                <p>Ad Vitam</p>
-            </a>
-        </div>
-        <div class="film"> <!--Babysitting-->
-            <a href="films/babysitting.html">
-                <img src="https://image.tmdb.org/t/p/original/lY5u3bvWXRk3KMrSoP0Sd3Ro5gW.jpg" alt="Babysitting">
-                <p>Babysitting</p>
-            </a>
-        </div>
-        <div class="film"> <!--Collection Balle Perdue-->
-            <a href="films/collection-balle-perdue.html">
-                <img src="https://image.tmdb.org/t/p/original/nrJg7CB2FW35qXgGY0spq6EqDjD.jpg" alt="Collection Balle Perdue">
-                <p>Balle Perdue (1 à 2)</p>
-            </a>
-        </div>
-        <div class="film"> <!--Bref./Bref.2-->
-            <a href="series/bref.html">
-                <img src="https://image.tmdb.org/t/p/original/ddCxr3JOEh8tTebrHlXv31wY37r.jpg" alt="Bref.">
-                <p>Bref.</p>
-            </a>
-        </div>
-        <div class="film"> <!--Champions-->
-            <a href="films/champions.html">
-                <img src="https://image.tmdb.org/t/p/original/ghsSNhsjVMPy4ezdntLWo85c7Nm.jpg" alt="Champions">
-                <p>Champions</p>
-            </a>
-        </div>
-        <div class="film"> <!--Divorce Club-->
-            <a href="films/divorceclub.html">
-                <img src="https://image.tmdb.org/t/p/original/q0FE1o5SUJzImwV4Q099uAq018U.jpg" alt="Divorce Club">
-                <p>Divorce Club</p>
-            </a>
-        </div>
-        <div class="film"> <!--Collection Ducobu-->
-            <a href="films/collection-ducobu.html">
-                <img src="https://image.tmdb.org/t/p/original/piVjl9Xhd6xeYxJnm7ifJaURjHd.jpg" alt="Collection Ducobu">
-                <p>Ducobu (5 films)</p>
-            </a>
-        </div>
-        <div class="film"> <!--Encanto-->
-            <a href="films/encanto.html">
-                <img src="https://image.tmdb.org/t/p/original/vkrAGbjK6TRMrAW5Gq0SmNPOAoc.jpg" alt="Encanto, la fantastique famille Madrigal">
-                <p>Encanto, la fantastique famille Madrigal</p>
-            </a>
-        </div>
-        <div class="film"> <!--HP-->
-            <a href="films/collection-harry-potter.html">
-                <img src="https://image.tmdb.org/t/p/original/jMxvBLpq0WivnaU5VhLdetfjd5k.jpg" alt="Collection Harry Potter">
-                <p>Harry Potter (8 films)</p>
-            </a>
-        </div>
-        <div class="film"> <!--Collection Hunger Games-->
-            <a href="films/collection-hunger-games.html">
-                <img src="https://image.tmdb.org/t/p/original/2eQPl7d12djrnMZsBJIqeUmDgkz.jpg" alt="Collection Hunger Games">
-                <p>Hunger Games (4 films)</p>
-            </a>
-        </div>
-        <div class="film"><!--Inception-->
-            <a href="films/inception.html">
-                <img src="https://image.tmdb.org/t/p/original/aej3LRUga5rhgkmRP6XMFw3ejbl.jpg" alt="Inception">
-                <p style="text-decoration:solid">Inception</p>
-            </a>
-        </div>
-        <div class="film"> <!--Intouchables-->
-            <a href="films/intouchables.html">
-                <img src="https://image.tmdb.org/t/p/original/gdUJ6ECIHNE5M2HImGaBOfb8jR2.jpg" alt="Intouchables">
-                <p>Intouchables</p>
-            </a>
-        </div>
-        <div class="film"> <!--L'Amour ouf-->
-            <a href="films/lamourouf.html">
-                <img src="https://image.tmdb.org/t/p/original/ehp7uj7Y0afsVKtKVEZycv5oUYN.jpg" alt="L'Amour ouf">
-                <p>L'Amour ouf</p>
-            </a>
-        </div>
-        <div class="film"> <!--La Cité de la Peur-->
-            <a href="films/la-cite-de-la-peur.html">
-                <img src="https://image.tmdb.org/t/p/original/jBzDbxsEiCUCiYcpDLpvbQ6kN2U.jpg" alt="La Cité de la Peur">
-                <p>La Cité de la Peur</p>
-            </a>
-        </div>
-        <div class="film"> <!--Là-haut-->
-            <a href="films/lahaut.html">
-                <img src="https://image.tmdb.org/t/p/original/k55kMEPkxGej70udPcVNqhTiwBz.jpg" alt="Là-haut">
-                <p>Là-haut</p>
-            </a>
-        </div>
-        <div class="film"> <!--La Tour Montparnasse Infernale-->
-            <a href="films/la-tour-montparnasse-infernale.html">
-                <img src="https://image.tmdb.org/t/p/original/heukySMm3v6NCV4lCqbyVK3ArGt.jpg" alt="La Tour Montparnasse Infernale">
-                <p>La Tour Montparnasse Infernale</p>
-            </a>
-        </div>
-        <div class="film"> <!--Le Comte de Monte-Cristo-->
-            <a href="films/lecomtedemontecristo.html">
-                <img src="https://image.tmdb.org/t/p/original/9OpXEvuKHOCQCssPE4c6d2evYac.jpg" alt="Le Comte de Monte-Cristo">
-                <p>Le Comte de Monte-Cristo</p>
-            </a>
-        </div>
-        <div class="film"> <!--Le dîner de cons-->
-            <a href="films/ledinerdecons.html">
-                <img src="https://image.tmdb.org/t/p/original/7ukFDHExWul2Zz3L0OH8CaZCp2Z.jpg" alt="Le dîner de cons">
-                <p>Le dîner de cons</p>
-            </a>
-        </div>
-        <div class="film"> <!--Le Monde Magique de Jérome Commandeur-->
-            <a href="series/mondemagiquedejeromecommandeur/mmjc-s1.html">
-                <img src="https://image.tmdb.org/t/p/original/2GQ4UNnmXXO6UP0BL7puKAxqIj9.jpg" alt="Le Monde Magique de Jérome Commandeur">
-                <p>Le Monde Magique de Jérome Commandeur</p>
-            </a>
-        </div>
-        <div class="film"> <!--Mia et le Lion blanc-->
-            <a href="films/mia-et-le-lion-blanc.html">
-                <img src="https://image.tmdb.org/t/p/original/lmrgXnG90DFZYeLrNhuEKUo7nKk.jpg" alt="Mia et le Lion Blanc">
-                <p>Mia et le Lion blanc</p>
-            </a>
-        </div>
-        <div class="film"> <!--Nous, les Leroy-->
-            <a href="films/nouslesleroy.html">
-                <img src="https://image.tmdb.org/t/p/original/tydkeN2ClMSLVnohzyiLIUmaRLT.jpg" alt="Nous, les Leroy">
-                <p>Nous, les Leroy</p>
-            </a>
-        </div>
-        <div class="film"> <!--The Floor-->
-            <a href="series/thefloor.html">
-                <img src="https://image.tmdb.org/t/p/original/nVaqyui0JzDB67KW3EB3xpFSUuZ.jpg" alt="The Floor">
-                <p>The Floor : à la conquête du sol</p>
-            </a>
-        </div>
-        <div class="film"> <!--Un p'tit truc en plus-->
-            <a href="films/unptittrucenplus.html">
-                <img src="https://image.tmdb.org/t/p/original/uIlJ1wOlEt5K3NowJQDG4qscQAC.jpg" alt="Un p'tit truc en plus">
-                <p>Un p'tit truc en plus</p>
-            </a>
+    </section>
+
+    <!-- Movies on Sale Section -->
+    <section class="movies-section">
+        <div class="section-header">
+            <h2>Notre sélection</h2>
         </div>
 
+        <div class="movies-carousel">
+            <div class="movie-card">
+                <a href="https://google.com/">
+                    <img src="https://image.tmdb.org/t/p/original/qIExh8vD4d5EzkXTGtnZHY1cw0m.jpg" alt="Take Out Tango">
+                </a>
+                <div class="movie-info">
+                    <h3 style="text-decoration: none;">3 jours max</h3>
+                    <div class="movie-meta">
+                    </div>
+                </div>
+            </div>
 
-    </main>
+            <div class="movie-card"> <!--Ad Vitam-->
+                <a href="films/advitam.html">
+                    <img src="https://image.tmdb.org/t/p/original/dOpSxmD3FWfl6SK8SLXw9uwcO05.jpg" alt="Ad Vitam">
+                </a>
+                <div class="movie-info">
+                    <h3 style="text-decoration: none;">Ad Vitam</h3>
+                    <div class="movie-meta">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <script src="script.js"></script>
 </body>
 </html>

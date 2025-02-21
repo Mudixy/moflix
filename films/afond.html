@@ -4,21 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>•StreamWorld - À fond</title>
+    <link rel="stylesheet" href="../watch-style.css">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
-<header>
-    <div class="catalogue-container">
-        <a href="../index.html" class="catalogue-button">📂 Catalogue</a>
-    </div>
-</header>
-
 <body>
-    <h1 style="text-align: center;">À fond</h1>
-    <h3 style="padding: 0px 20px;"><strong>Synopsis :</strong></h3>
-    <p style="padding: 0px 20px;">Une famille embarque dans son monospace flambant neuf, au petit matin, afin d’éviter les embouteillages pour les vacances d’été. Tom, le père, enclenche son régulateur de vitesse électronique sur 130 km/h. Au moment où une dernière bourde de Ben, le beau‐père, pousse Julia, excédée, à demander qu’on fasse demi‐tour, Tom s’aperçoit qu’il ne contrôle plus son véhicule. L’électronique de bord ne répond plus, la vitesse est bloquée à 130 km/h. Toutes les manœuvres pour ralentir la voiture emballée restent sans effet. Une voiture folle, six passagers au bord de la crise de nerfs et un embouteillage monstre qui les attend à moins de deux cents kilomètres de là…</p>
-    <br>
-    <iframe class="video-container" src="https://uqload.net/embed-2y1sal4ln2ta.html" width="80%" height="400" frameborder="0" allowfullscreen></iframe>
-    <br><br>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../logo.png" alt="Miru">
+            </div>
+            
+            <div class="nav-links">
+                <a href="../index.html">Accueil</a>
+                <a href="../catalogue.html">Catalogue</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Video Player Section -->
+        <section class="video-section">
+            <div class="video-container">
+                <IFRAME SRC="https://uqload.net/embed-2y1sal4ln2ta.html" FRAMEBORDER=5 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=640 HEIGHT=360 allowfullscreen></IFRAME>
+            </div>
+        </section>
+
+        <!-- Movie Info Section -->
+        <section class="movie-details">
+            <div class="content-wrapper">
+                <div class="main-info">
+                    <h1>À fond</h1>
+                    <div class="meta-info">
+                        <span class="year">2016</span>
+                        <span class="duration">1h 31min</span>
+                    </div>
+                    <div class="actions">
+                        <a href="https://youtu.be/NDslM1QXcQg?si=LfOOPysi2taIW5aA">
+                            <button class="btn-like">
+                                Voir le trailer
+                            </button>
+                        </a>
+                        <button class="btn-share">
+                            <i class="fas fa-share"></i>
+                            Partager
+                        </button>
+                    </div>
+                    <p class="description">
+                        Une famille embarque dans son monospace flambant neuf, au petit matin, afin d’éviter les embouteillages pour les vacances d’été. Tom, le père, enclenche son régulateur de vitesse électronique sur 130 km/h. Au moment où une dernière bourde de Ben, le beau‐père, pousse Julia, excédée, à demander qu’on fasse demi‐tour, Tom s’aperçoit qu’il ne contrôle plus son véhicule. L’électronique de bord ne répond plus, la vitesse est bloquée à 130 km/h. Toutes les manœuvres pour ralentir la voiture emballée restent sans effet. Une voiture folle, six passagers au bord de la crise de nerfs et un embouteillage monstre qui les attend à moins de deux cents kilomètres de là…
+                    </p>
+                    <div class="additional-info">
+                        <div class="info-item">
+                            <span class="label">Genre:</span>
+                            <span class="value">Comédie, Familial, Action</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Réalisation:</span>
+                            <span class="value">Nicolas Benamou</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Distribution:</span>
+                            <span class="value">José Garcia, Caroline Vigneaux, André Dussollier, Charlotte Gabris, Vincent Desagnat, Florence Foresti, Jérôme Commandeur</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="watch-script.js"></script>
 </body>
 </html>

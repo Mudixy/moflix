@@ -4,21 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>•StreamWorld - Balle Perdue</title>
+    <link rel="stylesheet" href="../watch-style.css">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
-<header>
-    <div class="catalogue-container">
-        <a href="../index.html" class="catalogue-button">📂 Catalogue</a>
-    </div>
-</header>
-
 <body>
-    <h1 style="text-align: center;">Balle Perdue</h1>
-    <h3 style="padding: 0px 20px;"><strong>Synopsis :</strong></h3>
-    <p style="padding: 0px 20px;">Petit génie de la mécanique, Lino est réputé pour ses voitures‐béliers. Jusqu’au jour où il se fait arrêter pour un braquage qui tourne mal. Repéré par le chef d’une unité de flics de choc, il se voit proposer un marché pour éviter la prison. Neuf mois plus tard, Lino a largement fait ses preuves. Mais soudain accusé à tort de meurtre, il n’a d’autre choix que de retrouver l’unique preuve de son innocence : la balle du crime, coincée dans une voiture disparue.</p>
-    <br>
-    <iframe class="video-container" src="https://uqload.net/embed-elqav1hz8a30.html" width="80%" height="400" frameborder="0" allowfullscreen></iframe>
-    <br><br>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../logo.png" alt="Miru">
+            </div>
+            
+            <div class="nav-links">
+                <a href="../index.html">Accueil</a>
+                <a href="../catalogue.html">Catalogue</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Video Player Section -->
+        <section class="video-section">
+            <div class="video-container">
+                <IFRAME SRC="https://uqload.net/embed-elqav1hz8a30.html" FRAMEBORDER=5 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=640 HEIGHT=360 allowfullscreen></IFRAME>
+            </div>
+        </section>
+
+        <!-- Movie Info Section -->
+        <section class="movie-details">
+            <div class="content-wrapper">
+                <div class="main-info">
+                    <h1>Balle Perdue</h1>
+                    <div class="meta-info">
+                        <span class="year">2020</span>
+                        <span class="duration">1h 32min</span>
+                    </div>
+                    <div class="actions">
+                        <a href="https://youtu.be/fbmh2f6EoDc">
+                            <button class="btn-like">
+                                Voir le trailer
+                            </button>
+                        </a>
+                        <button class="btn-share">
+                            <i class="fas fa-share"></i>
+                            Partager
+                        </button>
+                    </div>
+                    <p class="description">
+                        Petit génie de la mécanique, Lino est réputé pour ses voitures‐béliers. Jusqu’au jour où il se fait arrêter pour un braquage qui tourne mal. Repéré par le chef d’une unité de flics de choc, il se voit proposer un marché pour éviter la prison. Neuf mois plus tard, Lino a largement fait ses preuves. Mais soudain accusé à tort de meurtre, il n’a d’autre choix que de retrouver l’unique preuve de son innocence : la balle du crime, coincée dans une voiture disparue.
+                    </p>
+                    <div class="additional-info">
+                        <div class="info-item">
+                            <span class="label">Genre:</span>
+                            <span class="value">Action, Thriller, Crime</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Réalisation:</span>
+                            <span class="value">Guillaume Pierret</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Distribution:</span>
+                            <span class="value">Alban Lenoir, Nicolas Duvauchelle, Rod Paradot, Ramzy Bedia, Stéfi Celma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="watch-script.js"></script>
 </body>
 </html>

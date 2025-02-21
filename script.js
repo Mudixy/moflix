@@ -1,47 +1,67 @@
-const API_KEY = "4aa5776ef3fdc9d6ee9a7b8815055984";
-const API_URL = `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}&language=fr`;
+console.log("Le script est chargé !");
 
-const films = document.querySelectorAll(".film");
-const searchInput = document.getElementById("search");
-const catalogue = document.getElementById("catalogue");
-
-async function fetchMovies() {
-    const response = await fetch(API_URL);
-    const data = await response.json();
-    films = data.results;
-    displayMovies(films);
-}
-
-function displayMovies(filmsList) {
-    catalogue.innerHTML = "";
-    filmsList.forEach(film => {
-        const filmElement = document.createElement("div");
-        filmElement.classList.add("film");
-        filmElement.innerHTML = `
-            <img src="https://image.tmdb.org/t/p/w500${film.poster_path}" alt="${film.title || film.name}">
-            <p>${film.title || film.name}</p>
+    // Fonction pour créer une carte de film
+    function createMovieCard(movie) {
+        return `
+            <div class="movie-card">
+                <div class="discount">${movie.discount}</div>
+                <img src="${movie.image}" alt="${movie.title}">
+                <div class="movie-info">
+                    <h3>${movie.title}</h3>
+                </div>
+            </div>
         `;
-        filmElement.addEventListener("click", () => {
-            window.location.href = `details.html?id=${film.id}&type=${film.media_type}`;
+    }
+
+    // Gérer le menu de navigation responsive
+    const navLinks = document.querySelector('.nav-links');
+    const menuButton = document.createElement('button');
+    menuButton.classList.add('menu-button');
+    menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+    
+    if (window.innerWidth <= 768) {
+        document.querySelector('nav').insertBefore(menuButton, navLinks);
+        
+        menuButton.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
         });
-        catalogue.appendChild(filmElement);
-    });
-};
+    }
 
-searchInput.addEventListener("input", () => {
-    const searchTerm = searchInput.value.toLowerCase();
+    // Animation du header au scroll
+    let lastScroll = 0;
+    const header = document.querySelector('header');
 
-    films.forEach(film => {
-        const title = film.querySelector("p").innerText.toLowerCase();
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
 
-        // Si le champ de recherche est vide, afficher tout
-        if (searchTerm === "") {
-            film.style.display = "block";
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            header.style.transform = 'translateY(-100%)';
         } else {
-            // Vérifier si le titre contient le texte recherché
-            film.style.display = title.includes(searchTerm) ? "block" : "none";
+            header.style.transform = 'translateY(0)';
         }
-    });
-});
 
-fetchMovies();
+        lastScroll = currentScroll;
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const movieCards = document.querySelectorAll('.movie-card');
+    
+        function searchMovies() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+    
+            movieCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                
+                // Si le titre contient le terme recherché, afficher la carte, sinon la cacher
+                if (title.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    
+        // Écouter l'événement input sur la barre de recherche
+        searchInput.addEventListener('input', searchMovies);
+    });

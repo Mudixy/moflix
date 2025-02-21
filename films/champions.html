@@ -4,21 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>•StreamWorld - Champions</title>
+    <link rel="stylesheet" href="../watch-style.css">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
-<header>
-    <div class="catalogue-container">
-        <a href="../index.html" class="catalogue-button">📂 Catalogue</a>
-    </div>
-</header>
-
 <body>
-    <h1 style="text-align: center;">Champions</h1>
-    <h3 style="padding: 0px 20px;"><strong>Synopsis :</strong></h3>
-    <p style="padding: 0px 20px;">Marco occupe le prestigieux poste d’entraîneur-adjoint de l'équipe d'Espagne de basket. Mais son mauvais caractère lui pose problème. Après une série de déconvenues dont il est le seul responsable, Marco se retrouve à devoir coacher une équipe de déficients mentaux.</p>
-    <br>
-    <iframe class="video-container" src="https://uqload.net/embed-bjf4dj0vd4hy.html" width="80%" height="400" frameborder="0" allowfullscreen></iframe>
-    <br><br>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="../logo.png" alt="Miru">
+            </div>
+            
+            <div class="nav-links">
+                <a href="../index.html">Accueil</a>
+                <a href="../catalogue.html">Catalogue</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Video Player Section -->
+        <section class="video-section">
+            <div class="video-container">
+                <IFRAME SRC="https://uqload.net/embed-bjf4dj0vd4hy.html" FRAMEBORDER=5 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=640 HEIGHT=360 allowfullscreen></IFRAME>
+            </div>
+        </section>
+
+        <!-- Movie Info Section -->
+        <section class="movie-details">
+            <div class="content-wrapper">
+                <div class="main-info">
+                    <h1>Champions</h1>
+                    <div class="meta-info">
+                        <span class="year">2018</span>
+                        <span class="duration">1h 58min</span>
+                    </div>
+                    <div class="actions">
+                        <a href="https://youtu.be/SVKpDOxEIDE">
+                            <button class="btn-like">
+                                Voir le trailer
+                            </button>
+                        </a>
+                        <button class="btn-share">
+                            <i class="fas fa-share"></i>
+                            Partager
+                        </button>
+                    </div>
+                    <p class="description">
+                        Marco occupe le prestigieux poste d’entraîneur-adjoint de l'équipe d'Espagne de basket. Mais son mauvais caractère lui pose problème. Après une série de déconvenues dont il est le seul responsable, Marco se retrouve à devoir coacher une équipe de déficients mentaux.
+                    </p>
+                    <div class="additional-info">
+                        <div class="info-item">
+                            <span class="label">Genre:</span>
+                            <span class="value">Comédie, Familial, Drame</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Réalisation:</span>
+                            <span class="value">Javier Fesser</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Distribution:</span>
+                            <span class="value">Javier Gutiérrez, Athenea Mata, Juan Margallo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="watch-script.js"></script>
 </body>
 </html>

@@ -1,148 +1,198 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>•StreamWorld - Le meilleur est ici !</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalogue - •StreamWorld</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="watch-styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="logo.png" alt="Miru">
-            </div>
 
-<!-- Structure HTML à vérifier -->
-<div class="search-container">
-    <i class="fas fa-search"></i>
-    <input type="search" id="searchInput" placeholder="Rechercher un titre...">
-    <div id="searchResults" class="search-results"></div>
-</div>
-
-            <div class="nav-links">
-                <a href="index.html">Accueil</a>
-                <a href="catalogue.html">Catalogue</a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Movies on Sale Section -->
-    <section class="movies-section">
-            <h2>‎ </h2>
-            <h2>Catalogue</h2>
-            <p>‎ </p>
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="logo">•StreamWorld</a>
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="search" id="searchInput" placeholder="Rechercher un titre...">
+            <div id="searchResults" class="search-results"></div>
         </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="catalogue.html" class="active">Catalogue</a></li>
+          </ul>
+        <div class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-        <div class="movies-carousel">
+  <main>
 
-            <div class="movie-card"> <!--3 jours max-->
-                <a href="films/3joursmax.html">
-                    <img src="https://image.tmdb.org/t/p/original/qIExh8vD4d5EzkXTGtnZHY1cw0m.jpg" alt="3 jours max">
-                </a>
-                <div class="movie-info">
-                    <h3 style="text-decoration: none;">3 jours max</h3>
-                    <div class="movie-meta">
-                    </div>
-                </div>
-            </div>
-
-            <div class="movie-card"> <!--A fond-->
-                <a href="films/afond.html">
-                    <img src="https://image.tmdb.org/t/p/original/onCQ5IhUEFuantJuoJE2JtlPiAq.jpg" alt="À fond">
-                </a>
-                <div class="movie-info">
-                    <h3 style="text-decoration: none;">À fond</h3>
-                    <div class="movie-meta">
-                    </div>
-                </div>
-            </div>
-
-            <div class="movie-card"> <!--Ad Vitam-->
-                <div class="discount">À ne pas manquer</div>
-                <a href="films/advitam.html">
-                    <img src="https://image.tmdb.org/t/p/original/dOpSxmD3FWfl6SK8SLXw9uwcO05.jpg" alt="Ad Vitam">
-                </a>
-                <div class="movie-info">
-                    <h3 style="text-decoration: none;">Ad Vitam</h3>
-                    <div class="movie-meta">
-                    </div>
-                </div>
-            </div>
-
-            <div class="movie-card"> <!--Babysitting-->
-                <a href="films/advitam.html">
-                    <img src="https://image.tmdb.org/t/p/original/lY5u3bvWXRk3KMrSoP0Sd3Ro5gW.jpg" alt="Babysitting">
-                </a>
-                <div class="movie-info">
-                    <h3 style="text-decoration: none;">Babysitting</h3>
-                    <div class="movie-meta">
-                    </div>
-                </div>
-            </div>
-
-            <div class="movie-card"> <!--Balle Perdue 1-->
-                <a href="films/balleperdue.html">
-                    <img src="https://image.tmdb.org/t/p/original/nrJg7CB2FW35qXgGY0spq6EqDjD.jpg" alt="Balle Perdue">
-                </a>
-                <div class="movie-info">
-                    <h3 style="text-decoration: none;">Balle Perdue</h3>
-                    <div class="movie-meta">
-                    </div>
-                </div>
-            </div>
+    <section class="container section">
+        <div class="movie-grid"> 
             
-            <div class="movie-card"> <!--Balle Perdue 2-->
-                <a href="films/balleperdue2.html">
-                    <img src="https://image.tmdb.org/t/p/original/bkxUkzsRdMwUgAbiUB6BAIZsNaU.jpg" alt="Balle Perdue 2">
-                </a>
-                <div class="movie-info">
-                    <h3 style="text-decoration: none;">Balle Perdue 2</h3>
-                    <div class="movie-meta">
+        <a href="films/3joursmax.html"> <!--3 jours max-->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="https://image.tmdb.org/t/p/original/qIExh8vD4d5EzkXTGtnZHY1cw0m.jpg" alt="3 jours max">
+                    </div>
+                    <div class="movie-info">
+                        <h3>3 jours max</h3>
+                        <p class="movie-date">25 oct. 2023</p>
                     </div>
                 </div>
-            </div>
+        </a>
 
-            <div class="movie-card"> <!--Champions-->
-                <a href="films/champions.html">
-                    <img src="https://image.tmdb.org/t/p/original/ghsSNhsjVMPy4ezdntLWo85c7Nm.jpg" alt="Champions">
-                </a>
-                <div class="movie-info">
-                    <h3 style="text-decoration: none;">Champions</h3>
-                    <div class="movie-meta">
-                    </div>
-                </div>
-            </div>
+        <a href="films/afond.html"> <!--À fond-->
+              <div class="movie-card">
+                  <div class="movie-poster">
+                      <img src="https://image.tmdb.org/t/p/original/onCQ5IhUEFuantJuoJE2JtlPiAq.jpg" alt="À fond">
+                  </div>
+                  <div class="movie-info">
+                      <h3>À fond</h3>
+                      <p class="movie-date">11 nov. 2016</p>
+                  </div>
+              </div>
+        </a>
 
-            <div class="movie-card"> <!--Divorce Club-->
-                <a href="films/divorceclub.html">
-                    <img src="https://image.tmdb.org/t/p/original/q0FE1o5SUJzImwV4Q099uAq018U.jpg" alt="Divorce Club">
-                </a>
-                <div class="movie-info">
-                    <h3 style="text-decoration: none;">Divorce Club</h3>
-                    <div class="movie-meta">
+        <a href="films/advitam.html"> <!--Ad Vitam-->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="https://image.tmdb.org/t/p/original/dOpSxmD3FWfl6SK8SLXw9uwcO05.jpg" alt="Ad Vitam">
+                    </div>
+                    <div class="movie-info">
+                        <h3>Ad Vitam</h3>
+                        <p class="movie-date">10 jan. 2025</p>
                     </div>
                 </div>
-            </div>
+        </a>
 
-            <div class="movie-card"> <!--L'Amour Ouf-->
-                <a href="films/lamourouf.html">
-                    <img src="https://image.tmdb.org/t/p/original/ehp7uj7Y0afsVKtKVEZycv5oUYN.jpg" alt="L'Amour Ouf">
-                </a>
+        <a href="films/balleperdue.html"> <!--Balle Perdue-->
+          <div class="movie-card">
+              <div class="movie-poster">
+                  <img src="https://image.tmdb.org/t/p/original/nrJg7CB2FW35qXgGY0spq6EqDjD.jpg" alt="">
+              </div>
+              <div class="movie-info">
+                  <h3>Balle Perdue</h3>
+                  <p class="movie-date">19 jun. 2020</p>
+              </div>
+          </div>
+  </a>
+
+        <a href="series/bref.html"> <!--Bref-->
+              <div class="movie-card">
+                  <div class="movie-poster">
+                    <div class="discount">Saisons 1 & 2</div>
+                      <img src="https://image.tmdb.org/t/p/original/alaRcixeZ1lLVb5NuvmJnAsfbyA.jpg" alt="">
+                  </div>
+                  <div class="movie-info">
+                      <h3>Bref.</h3>
+                      <p class="movie-date">2011 / 14 fév. 2025</p>
+                  </div>
+              </div>
+        </a>
+
+        <a href="films/lamourouf.html"> <!--L'Amour ouf-->
+            <div class="movie-card">
+                <div class="movie-poster">
+                  <img src="https://image.tmdb.org/t/p/original/ehp7uj7Y0afsVKtKVEZycv5oUYN.jpg" alt="">
+                </div>
                 <div class="movie-info">
-                    <h3 style="text-decoration: none;">L'Amour Ouf</h3>
-                    <div class="movie-meta">
-                    </div>
+                    <h3>L'Amour ouf</h3>
+                    <p class="movie-date">16 oct. 2024</p>
                 </div>
             </div>
+        </a>
+
+        <a href="films/laseptiemecompagnieauclairdelune.html"> <!--7ème Cie 3-->
+            <div class="movie-card">
+                <div class="movie-poster">
+                  <img src="https://image.tmdb.org/t/p/original/gltpQcyKr0xXg8bfcQy8gC02RSB.jpg" alt="">
+                </div>
+                <div class="movie-info">
+                    <h3>La 7ème compagnie au clair de lune</h3>
+                    <p class="movie-date">7 déc. 1977</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="films/maisouestdoncpasseelaseptiemecompagnie.html"> <!--7ème Cie 1-->
+            <div class="movie-card">
+                <div class="movie-poster">
+                  <img src="https://image.tmdb.org/t/p/original/a2FADJYPqb7x3KDBxbDRwBsiHn4.jpg" alt="Mais où est donc passée la 7ème compagnie ?">
+                </div>
+                <div class="movie-info">
+                    <h3>Mais où est donc passée la 7ème compagnie ?</h3>
+                    <p class="movie-date">13 déc. 1973</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="films/onaretrouvelaseptiemecompagnie.html"> <!--7ème Cie 2-->
+          <div class="movie-card">
+              <div class="movie-poster">
+                <img src="https://image.tmdb.org/t/p/original/vHCQeUGdNAlPkAkiBBSX74I9GnH.jpg" alt="On a retrouvé la 7ème compagnie">
+              </div>
+              <div class="movie-info">
+                  <h3>On a retrouvé la 7ème compagnie</h3>
+                  <p class="movie-date">10 déc. 1975</p>
+              </div>
+          </div>
+        </a>
+
+        <a href="tv/tpmp-tlv.html"> <!--TPMP Toute la vérité-->
+              <div class="movie-card">
+                  <div class="movie-poster">
+                    <div class="discount">Détails uniquement</div>
+                      <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/dbLHj43lGqow3tRnPvYnc5Xy6ao.jpg" alt="TPMP ! Toute la vérité">
+                  </div>
+                  <div class="movie-info">
+                      <h3>TPMP ! Toute la vérité</h3>
+                      <p class="movie-date">27 fev. 2025</p>
+                  </div>
+              </div>
+        </a>
 
         </div>
     </section>
 
-<script src="script.js"></script>
+  </main>
 
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>•StreamWorld</h2>
+          <p>Votre référence cinématographique.</p>
+        </div>
+        <div class="footer-links">
+          <h3>Liens rapides</h3>
+          <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="../catalogue.html">Catalogue</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h3>Suivez-nous</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024-2025 - •StreamWorld. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

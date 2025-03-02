@@ -1,67 +1,81 @@
-console.log("Le script est chargé !");
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('searchInput');
+  const movieGrid = document.querySelector('.movie-grid');
+  const movieCards = Array.from(document.querySelectorAll('.movie-card'));
 
-    // Fonction pour créer une carte de film
-    function createMovieCard(movie) {
-        return `
-            <div class="movie-card">
-                <div class="discount">${movie.discount}</div>
-                <img src="${movie.image}" alt="${movie.title}">
-                <div class="movie-info">
-                    <h3>${movie.title}</h3>
-                </div>
-            </div>
-        `;
-    }
+  function searchMovies() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      
+      // On filtre uniquement les cartes qui doivent être visibles
+      const visibleCards = movieCards.filter(card => {
+          const title = card.querySelector('h3').textContent.toLowerCase();
+          return title.includes(searchTerm);
+      });
 
-    // Gérer le menu de navigation responsive
-    const navLinks = document.querySelector('.nav-links');
-    const menuButton = document.createElement('button');
-    menuButton.classList.add('menu-button');
-    menuButton.innerHTML = '<i class="fas fa-bars"></i>';
-    
-    if (window.innerWidth <= 768) {
-        document.querySelector('nav').insertBefore(menuButton, navLinks);
-        
-        menuButton.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-        });
-    }
+      // On vide la grille et on réinsère uniquement les cartes visibles
+      movieGrid.innerHTML = ''; 
+      visibleCards.forEach(card => movieGrid.appendChild(card));
+  }
 
-    // Animation du header au scroll
-    let lastScroll = 0;
-    const header = document.querySelector('header');
+  searchInput.addEventListener('input', searchMovies);
+});
 
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
+document.addEventListener('DOMContentLoaded', function() {
+  function uniformiserHauteur() {
+      const movieCards = document.querySelectorAll('.movie-card');
+      let maxHeight = 0;
 
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            header.style.transform = 'translateY(0)';
-        }
+      // Réinitialiser la hauteur pour un recalcul propre
+      movieCards.forEach(card => {
+          card.style.height = 'auto';
+      });
 
-        lastScroll = currentScroll;
-    });
+      // Trouver la hauteur maximale des cartes
+      movieCards.forEach(card => {
+          maxHeight = Math.max(maxHeight, card.offsetHeight);
+      });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.getElementById('searchInput');
-        const movieCards = document.querySelectorAll('.movie-card');
-    
-        function searchMovies() {
-            const searchTerm = searchInput.value.toLowerCase().trim();
-    
-            movieCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                
-                // Si le titre contient le terme recherché, afficher la carte, sinon la cacher
-                if (title.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-    
-        // Écouter l'événement input sur la barre de recherche
-        searchInput.addEventListener('input', searchMovies);
-    });
+      // Appliquer la hauteur maximale trouvée
+      movieCards.forEach(card => {
+          card.style.height = maxHeight + 'px';
+      });
+  }
+
+  function tronquerTitres() {
+      const titles = document.querySelectorAll('.movie-card h3');
+
+      titles.forEach(title => {
+          const originalText = title.textContent;
+          title.dataset.fullText = originalText; // Stocker le texte original
+
+          if (title.scrollWidth > title.clientWidth) {
+              let truncatedText = originalText;
+
+              while (title.scrollWidth > title.clientWidth && truncatedText.length > 0) {
+                  truncatedText = truncatedText.slice(0, -1);
+                  title.textContent = truncatedText + '...';
+              }
+          }
+
+          // Afficher le texte complet au survol
+          title.addEventListener('mouseenter', function() {
+              title.textContent = title.dataset.fullText;
+          });
+
+          title.addEventListener('mouseleave', function() {
+              title.textContent = originalText.length > truncatedText.length ? truncatedText + '...' : originalText;
+          });
+      });
+  }
+
+  // Appliquer les ajustements au chargement et au redimensionnement
+  uniformiserHauteur();
+  tronquerTitres();
+  window.addEventListener('resize', function() {
+      uniformiserHauteur();
+      tronquerTitres();
+  });
+});
+
+
+

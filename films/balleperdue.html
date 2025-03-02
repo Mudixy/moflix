@@ -1,79 +1,148 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>•StreamWorld - Balle Perdue</title>
-    <link rel="stylesheet" href="../watch-style.css">
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balle perdue - •StreamWorld</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../watch-styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="../logo.png" alt="Miru">
-            </div>
-            
-            <div class="nav-links">
-                <a href="../index.html">Accueil</a>
-                <a href="../catalogue.html">Catalogue</a>
-            </div>
-        </nav>
-    </header>
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <a href="../index.html" class="logo">•StreamWorld</a>
+        <ul class="nav-links">
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="../catalogue.html" class="active">Catalogue</a></li>
+        </ul>
+        <div class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Video Player Section -->
-        <section class="video-section">
-            <div class="video-container">
-                <IFRAME SRC="https://uqload.net/embed-elqav1hz8a30.html" FRAMEBORDER=5 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=640 HEIGHT=360 allowfullscreen></IFRAME>
-            </div>
-        </section>
+  <main>
+    <div class="movie-backdrop" style="background-image: url('https://image.tmdb.org/t/p/original/t4mzypFVjY6toyBXAmfrIaWcUXa.jpg')">
+      <div class="backdrop-overlay"></div>
+    </div>
 
-        <!-- Movie Info Section -->
-        <section class="movie-details">
-            <div class="content-wrapper">
-                <div class="main-info">
-                    <h1>Balle Perdue</h1>
-                    <div class="meta-info">
-                        <span class="year">2020</span>
-                        <span class="duration">1h 32min</span>
-                    </div>
-                    <div class="actions">
-                        <a href="https://youtu.be/fbmh2f6EoDc">
-                            <button class="btn-like">
-                                Voir le trailer
-                            </button>
-                        </a>
-                        <button class="btn-share">
-                            <i class="fas fa-share"></i>
-                            Partager
-                        </button>
-                    </div>
-                    <p class="description">
-                        Petit génie de la mécanique, Lino est réputé pour ses voitures‐béliers. Jusqu’au jour où il se fait arrêter pour un braquage qui tourne mal. Repéré par le chef d’une unité de flics de choc, il se voit proposer un marché pour éviter la prison. Neuf mois plus tard, Lino a largement fait ses preuves. Mais soudain accusé à tort de meurtre, il n’a d’autre choix que de retrouver l’unique preuve de son innocence : la balle du crime, coincée dans une voiture disparue.
-                    </p>
-                    <div class="additional-info">
-                        <div class="info-item">
-                            <span class="label">Genre:</span>
-                            <span class="value">Action, Thriller, Crime</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="label">Réalisation:</span>
-                            <span class="value">Guillaume Pierret</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="label">Distribution:</span>
-                            <span class="value">Alban Lenoir, Nicolas Duvauchelle, Rod Paradot, Ramzy Bedia, Stéfi Celma</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+    <section class="container movie-detail">
+      <div class="movie-poster-large">
+        <img src="https://image.tmdb.org/t/p/original/nrJg7CB2FW35qXgGY0spq6EqDjD.jpg" alt="Balle perdue">
+      </div>
+      <div class="movie-detail-info">
+        <h1>Balle perdue<span class="movie-year"> (2020)</span></h1>
+        <div class="video-actions">
+            <button class="btn btn-secondary">Action</button>
+            <button class="btn btn-secondary">Crime</button>
+            <button class="btn btn-secondary">Thriller</button>
+            <button class="btn btn-secondary">1h 32 min</button>
+          </div>
+        <div class="movie-overview">
+          <h3>Synopsis</h3>
+          <p>Petit génie de la mécanique, Lino est réputé pour ses voitures‐béliers. Jusqu’au jour où il se fait arrêter pour un braquage qui tourne mal. Repéré par le chef d’une unité de flics de choc, il se voit proposer un marché pour éviter la prison. Neuf mois plus tard, Lino a largement fait ses preuves. Mais soudain accusé à tort de meurtre, il n’a d’autre choix que de retrouver l’unique preuve de son innocence : la balle du crime, coincée dans une voiture disparue.
+        </p>
+        </div>
+        <div class="movie-crew">
+          <div class="crew-member">
+            <h4>Réalisation</h4>
+            <p>Guillaume Pierret</p>
+          </div>
+          <div class="crew-member">
+            <h4>Sortie officielle</h4>
+            <p>19 juin 2020</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <script src="watch-script.js"></script>
+    <div class="video-player-container">
+        <div class="video-player-wrapper">
+          <div class="video-player">
+            <iframe 
+              src="https://uqload.net/embed-elqav1hz8a30.html" 
+              title="" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+    <section class="container movie detail">
+      <h2 style="color: white;">Distribution principale</h2>
+      <div class="cast-grid">
+        
+        <div class="cast-card">
+          <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/jOWPgqzpvsaxzgBNzDqs2RR5jI6.jpg" alt="">
+          <div class="cast-info">
+            <h3>Alban Lenoir</h3>
+            <p>Lino</p>
+          </div>
+        </div>
+
+        <div class="cast-card">
+          <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/n7YCQH0H0gtHIHfxvOPzI65MFJd.jpg" alt="">
+          <div class="cast-info">
+            <h3>Ramzy Bédia</h3>
+            <p>Charas</p>
+          </div>
+        </div>
+
+        <div class="cast-card">
+            <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/8WZUWYN7Ia83rPSQRK9N8K3N8zQ.jpg" alt="">
+            <div class="cast-info">
+              <h3>Stéfi Celma</h3>
+              <p>Julia</p>
+            </div>
+        </div>
+
+        <div class="cast-card">
+          <img src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/nQsvg9syyFY112gi9TC56xIKhRI.jpg" alt="">
+          <div class="cast-info">
+            <h3>Nicolas Duvauchelle</h3>
+            <p>Areski</p>
+          </div>
+      </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>•StreamWorld</h2>
+          <p>Votre référence cinématographique.</p>
+        </div>
+        <div class="footer-links">
+          <h3>Liens rapides</h3>
+          <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="../catalogue.html">Catalogue</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h3>Suivez-nous</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024-2025 - •StreamWorld. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

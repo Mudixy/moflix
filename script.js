@@ -88,10 +88,12 @@ document.addEventListener('DOMContentLoaded', function() {
         { title: 'Ad Vitam', date: '10 jan. 2025', link: 'films/advitam.html', imgSrc: 'https://image.tmdb.org/t/p/original/dOpSxmD3FWfl6SK8SLXw9uwcO05.jpg' },
         { title: 'Balle Perdue', date: '19 jun. 2020', link: 'films/balleperdue.html', imgSrc: 'https://image.tmdb.org/t/p/original/nrJg7CB2FW35qXgGY0spq6EqDjD.jpg' },
         { title: 'Bref.', date: '2011 / 14 fév. 2025', link: 'series/bref.html', imgSrc: 'https://image.tmdb.org/t/p/original/alaRcixeZ1lLVb5NuvmJnAsfbyA.jpg' },
+        { title: 'Inside TPMP', date: '26 fév. 2025', link: 'tv/insidetpmp.html', imgSrc: 'https://image.tmdb.org/t/p/original/o42ITCQS2ZDBoT3HIGXvBsD58Sd.jpg' },
         { title: 'L Amour Ouf', date: '16 oct. 2024', link: 'films/lamourouf.html', imgSrc: 'https://image.tmdb.org/t/p/original/ehp7uj7Y0afsVKtKVEZycv5oUYN.jpg' },
         { title: 'La 7ème compagnie au clair de lune', date: '7 déc. 1977', link: 'films/laseptiemecompagnieauclairdelune.html', imgSrc: 'https://image.tmdb.org/t/p/original/gltpQcyKr0xXg8bfcQy8gC02RSB.jpg' },
         { title: 'Lune de miel avec ma mère', date: '12 fév. 2025', link: 'films/lunedemielavecmamere.html', imgSrc: 'https://image.tmdb.org/t/p/original/bzW0afBIyWZ0bjCje8GPezvETy0.jpg' },
         { title: 'Mais où est donc passée la 7ème compagnie ?', date: '13 déc. 1973', link: 'films/maisouestdoncpasseelaseptiemecompagnie.html', imgSrc: 'https://image.tmdb.org/t/p/original/a2FADJYPqb7x3KDBxbDRwBsiHn4.jpg' },
+        { title: 'TPMP ! Toute la vérité', date: '27 fév. 2025', link: 'tv/tpmp-tlv.html', imgSrc: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/dbLHj43lGqow3tRnPvYnc5Xy6ao.jpg' },
 
     ];
 

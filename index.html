@@ -1,129 +1,439 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>•StreamWorld - Votre base de données de films</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>•StreamWorld devient...</title>
+    <style>
+        :root {
+            --primary: #0070f3;
+            --secondary: #ff0080;
+            --background: #000;
+            --text: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            min-height: 80vh;
+        }
+
+        .glitch-wrapper {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .glitch {
+            font-size: 5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            color: var(--text);
+            letter-spacing: 0.5rem;
+            transform: scale3d(1, 1, 1);
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--secondary);
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 var(--primary);
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim-2 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-1 {
+            0% {
+                clip: rect(2px, 9999px, 28px, 0);
+            }
+            10% {
+                clip: rect(42px, 9999px, 73px, 0);
+            }
+            20% {
+                clip: rect(61px, 9999px, 130px, 0);
+            }
+            30% {
+                clip: rect(24px, 9999px, 40px, 0);
+            }
+            40% {
+                clip: rect(80px, 9999px, 153px, 0);
+            }
+            50% {
+                clip: rect(35px, 9999px, 45px, 0);
+            }
+            60% {
+                clip: rect(57px, 9999px, 73px, 0);
+            }
+            70% {
+                clip: rect(112px, 9999px, 120px, 0);
+            }
+            80% {
+                clip: rect(32px, 9999px, 55px, 0);
+            }
+            90% {
+                clip: rect(120px, 9999px, 130px, 0);
+            }
+            100% {
+                clip: rect(52px, 9999px, 70px, 0);
+            }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% {
+                clip: rect(12px, 9999px, 18px, 0);
+            }
+            10% {
+                clip: rect(62px, 9999px, 93px, 0);
+            }
+            20% {
+                clip: rect(41px, 9999px, 110px, 0);
+            }
+            30% {
+                clip: rect(14px, 9999px, 30px, 0);
+            }
+            40% {
+                clip: rect(60px, 9999px, 133px, 0);
+            }
+            50% {
+                clip: rect(25px, 9999px, 35px, 0);
+            }
+            60% {
+                clip: rect(67px, 9999px, 93px, 0);
+            }
+            70% {
+                clip: rect(92px, 9999px, 110px, 0);
+            }
+            80% {
+                clip: rect(12px, 9999px, 35px, 0);
+            }
+            90% {
+                clip: rect(90px, 9999px, 110px, 0);
+            }
+            100% {
+                clip: rect(32px, 9999px, 50px, 0);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .feature {
+            padding: 2rem;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        footer {
+            padding: 2rem;
+            text-align: center;
+            margin-top: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #111;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .modal h2 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .modal input, 
+        .modal textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            background-color: #222;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .modal button {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .close {
+            color: white;
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .glitch {
+                font-size: 3rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  
-  <header>
-    <nav class="navbar">
-      <div class="container">
-        <a href="index.html" class="logo">•StreamWorld</a>
-        <ul class="nav-links">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="catalogue.html" class="active">Catalogue</a></li>
-          </ul>
-        <div class="menu-toggle">
-          <i class="fas fa-bars"></i>
-        </div>
-      </div>
-    </nav>
-  </header>
+    <header>
+        <div class="logo">•StreamWorld</div>
+    </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-content">
-        <h1>Bienvenue sur •StreamWorld</h1>
-        <p>Découvrez des films, séries et émissions de télévision. Explorez dès maintenant pour découvrir et visionner des programmes.</p>
-        <div class="hero-buttons">
-          <a href="catalogue.html" class="btn btn-primary">Explorer le catalogue</a>
-          <a href="infos.html" class="btn btn-secondary">Lire les informations</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="container section">
-      <div class="section-header">
-        <h2 style="color: white;">Films populaires</h2>
-        <a href="catalogue.html" class="view-all">Voir tout</a>
-      </div>
-      <div class="movie-grid">
-
-        <a href="films/3joursmax.html">
-            <div class="movie-card">
-                <div class="movie-poster">
-                    <img src="https://image.tmdb.org/t/p/original/qIExh8vD4d5EzkXTGtnZHY1cw0m.jpg" alt="3 jours max">
-                </div>
-                <div class="movie-info">
-                    <h3>3 jours max</h3>
-                    <p class="movie-date">25 oct. 2023</p>
-                </div>
+    <main>
+        <section class="hero">
+            <div class="glitch-wrapper">
+                <h1 class="glitch" data-text="•StreamWorld devient...">•StreamWorld devient...</h1>
             </div>
-        </a>
+            <p class="subtitle" id="subtitle">Rendez-vous le 14 mars 2025 en fin de journée pour une nouvelle aventure.</p>
+            <button class="cta-button">...</button>
+        </section>
 
-        <a href="films/advitam.html">
-          <div class="movie-card">
-              <div class="movie-poster">
-                  <img src="https://image.tmdb.org/t/p/original/dOpSxmD3FWfl6SK8SLXw9uwcO05.jpg" alt="3 jours max">
-              </div>
-              <div class="movie-info">
-                  <h3>Ad Vitam</h3>
-                  <p class="movie-date">10 jan. 2025</p>
-              </div>
-          </div>
-      </a>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="container section">
-      <div class="section-header">
-        <h2 style="color: white;">Séries populaires</h2>
-        <a href="catalogue.html" class="view-all">Voir tout</a>
-      </div>
-      <div class="movie-grid">
-        <a href="series/bref.html">
-            <div class="movie-card">
-                <div class="movie-poster">
-                    <img src="https://image.tmdb.org/t/p/original/alaRcixeZ1lLVb5NuvmJnAsfbyA.jpg" alt="Bref">
-                </div>
-                <div class="movie-info">
-                    <h3>Bref.</h3>
-                    <p class="movie-date">2011 / 14 fév. 2025</p>
-                </div>
+        <section class="features" id="features">
+            <div class="feature">
+                <h3>•StreamWorld, c'est fini ?</h3>
+                <p>Oui... et non ! Vous découvrirez celà en tant voulu mais selon le point de vue que l'on prend, les 2 réponses sont possibles.</p>
             </div>
-        </a>
-        </div>
-      </div>
-    </section>
+            <div class="feature">
+                <h3>Quid des programmes présents jusqu'ici ?</h3>
+                <p>Les programmes présents sur •StreamWorld ne sont pas perdus et seront à nouveau disponibles très bientôt.</p>
+            </div>
+            <div class="feature">
+                <h3>Quoi de plus ?</h3>
+                <p>On peut rien vous dire...</p>
+            </div>
+        </section>
+    </main>
 
+    <footer id="contact">
+        <p>© 2025 •StreamWorld. Tous droits réservés.</p>
+    </footer>
 
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <h2>•StreamWorld</h2>
-          <p>Votre référence cinématographique.</p>
+    <div class="modal" id="customizeModal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Customize Your Page</h2>
+            <div>
+                <label for="mainTitle">Main Title:</label>
+                <input type="text" id="mainTitle" placeholder="•StreamWorld devient....">
+            </div>
+            <div>
+                <label for="subtitleText">Subtitle:</label>
+                <textarea id="subtitleText" rows="4" placeholder="Enter your subtitle text here"></textarea>
+            </div>
+            <div>
+                <label for="primaryColor">Primary Color:</label>
+                <input type="color" id="primaryColor" value="#0070f3">
+            </div>
+            <div>
+                <label for="secondaryColor">Secondary Color:</label>
+                <input type="color" id="secondaryColor" value="#ff0080">
+            </div>
+            <button id="applyChanges">Apply Changes</button>
         </div>
-        <div class="footer-links">
-          <h3>Liens rapides</h3>
-          <ul>
-            <li><a href="../index.html">Accueil</a></li>
-            <li><a href="../catalogue.html">Catalogue</a></li>
-          </ul>
-        </div>
-        <div class="footer-social">
-          <h3>Suivez-nous</h3>
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2024-2025 - •StreamWorld. Tous droits réservés.</p>
-      </div>
     </div>
-  </footer>
 
-  <script src="script.js"></script>
+    <script>
+        // Customize modal functionality
+        const customizeBtn = document.getElementById('customize-btn');
+        const modal = document.getElementById('customizeModal');
+        const closeModal = document.getElementById('closeModal');
+        const applyChanges = document.getElementById('applyChanges');
+        
+        // Main elements to customize
+        const glitchTitle = document.querySelector('.glitch');
+        const subtitle = document.getElementById('subtitle');
+        const root = document.documentElement;
+        
+        // Form inputs
+        const mainTitleInput = document.getElementById('mainTitle');
+        const subtitleTextInput = document.getElementById('subtitleText');
+        const primaryColorInput = document.getElementById('primaryColor');
+        const secondaryColorInput = document.getElementById('secondaryColor');
+        
+        // Initialize form with current values
+        mainTitleInput.value = glitchTitle.textContent;
+        subtitleTextInput.value = subtitle.textContent;
+        
+        // Open modal
+        customizeBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+        });
+        
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Apply customizations
+        applyChanges.addEventListener('click', () => {
+            // Update title
+            const newTitle = mainTitleInput.value || '•STREAMWORLD DEVIENT...';
+            glitchTitle.textContent = newTitle;
+            glitchTitle.setAttribute('data-text', newTitle);
+            
+            // Update subtitle
+            subtitle.textContent = subtitleTextInput.value;
+            
+            // Update colors
+            root.style.setProperty('--primary', primaryColorInput.value);
+            root.style.setProperty('--secondary', secondaryColorInput.value);
+            
+            // Close modal
+            modal.style.display = 'none';
+        });
+        
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#customize-btn') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -614,6 +614,14 @@ document.addEventListener("DOMContentLoaded", () => {
         categories: ["romance", "crime", "drame"],
       },
       {
+        id: "1084736",
+        title: "Le Comte de Monte-Cristo",
+        poster: "https://image.tmdb.org/t/p/original/g7kiprYdXxaYCZABWQwTWAgRYjl.jpg",
+        rating: 8.0,
+        year: 2024,
+        categories: ["action", "aventure", "drame"],
+      },
+      {
         id: "1255788",
         title: "Le Jardinier",
         poster: "https://image.tmdb.org/t/p/original/qxqwLXgd4vjouSsxKXbGhQyjwoa.jpg",
@@ -622,12 +630,28 @@ document.addEventListener("DOMContentLoaded", () => {
         categories: ["action", "comédie"],
       },
       {
+        id: "1261622",
+        title: "Lune de miel avec ma mère",
+        poster: "https://image.tmdb.org/t/p/original/bzW0afBIyWZ0bjCje8GPezvETy0.jpg",
+        rating: 5.5,
+        year: 2025,
+        categories: ["comédie"],
+      },
+      {
         id: "777443",
         title: "The Electric State",
         poster: "https://image.tmdb.org/t/p/original/1TZ9Er1xEAKizzKKqYVgJIhNkN2.jpg",
         rating: 7.4,
         year: 2025,
         categories: ["aventure", "drame", "science-fiction"],
+      },
+      {
+        id: "1152014",
+        title: "Un p'tit truc en plus",
+        poster: "https://image.tmdb.org/t/p/original/uIlJ1wOlEt5K3NowJQDG4qscQAC.jpg",
+        rating: 7.1,
+        year: 2024,
+        categories: ["comédie"],
       },
       {
         id: "277834",

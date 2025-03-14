@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Jardinier - Moflix</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="img/favicon-1.png">
+</head>
+<body>
+  <header>
+      <nav>
+          <div class="logo">
+            <a href="index.html"><h1>Moflix</h1></a>  
+          </div>
+          <div class="menu-toggle">
+              <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="catalogue.html">Films</a></li>
+            <li><a href="series.html">Séries</a></li>
+            <li><a href="#" id="darkModeToggle"><i class="fas fa-moon"></i></a></li>
+        </ul>
+          <div class="search-container">
+              <input type="text" id="searchInput" placeholder="Rechercher...">
+              <button id="searchButton"><i class="fas fa-search"></i></button>
+          </div>
+      </nav>
+  </header>
+
+  <main>
+      <div class="movie-detail-container">
+          <div class="movie-backdrop" style="background-image: url('https://image.tmdb.org/t/p/original/pqulyfkug9A7TmmRn5zrbRA8TAY.jpg')">
+            <div class="movie-poster-detail">
+              <img src="https://image.tmdb.org/t/p/original/qxqwLXgd4vjouSsxKXbGhQyjwoa.jpg" alt="Le Jardinier">
+            </div>
+          </div>
+          <div class="movie-info-detail">
+            <h1 class="movie-title-detail">Le Jardinier</h1>
+            <div class="movie-meta">
+              <span>2025</span>
+              <span>•</span>
+              <span>1h 50 min</span>
+              <span>•</span>
+              <span>Réalisé par David Charhon</span>
+              <span>•</span>
+              <div class="movie-rating-detail">
+                <i class="fas fa-star"></i>
+                <span>6.3/10</span>
+              </div>
+            </div>
+            <div class="movie-categories">
+              <span class="movie-category">Action</span>
+              <span class="movie-category">Comédie</span>
+            </div>
+            <div class="movie-description">
+              <p>Chaque année, le Premier ministre fait éliminer une liste de gêneurs au nom de la raison d’État. Bien malgré lui, le nom de Serge Shuster, conseiller spécial à la présidence, s’y retrouve. Lui et sa famille sont condamnés à une mort certaine. Mais ce que tout le monde ignore, c’est que les Shuster ont un nouveau jardinier, Léo, qui par le passé n’a pas cisaillé que des haies.</p>
+            </div>
+            </div>
+            <div class="video-iframe-container">
+              <iframe 
+                src="https://maxfinishseveral.com/e/9bcqfwthamry"
+                allowfullscreen 
+                allow="autoplay; encrypted-media">
+              </iframe>
+            </div>
+          </div>
+      </div>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <h2>Moflix</h2>
+            <p>Votre plateforme de streaming préférée</p>
+        </div>
+        <div class="footer-links">
+            <h3>Liens rapides</h3>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="series.html">Séries</a></li>
+                <li><a href="#">À propos</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-newsletter">
+            <h3>Rejoignez notre Instagram !</h3>
+            <div class="newsletter-form">
+                <a href="https://instagram.com/moflixtv"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Moflix. Tous droits réservés.</p>
+    </div>
+</footer>
+
+  <!-- Modals pour la bande-annonce et le lecteur vidéo -->
+  <div class="trailer-modal" id="trailerModal">
+    <div class="close-trailer">&times;</div>
+    <div class="trailer-container">
+      <iframe src="https://www.youtube.com/embed/YoHD9XEInc0" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="video-modal" id="videoModal">
+    <div class="close-video">&times;</div>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/YoHD9XEInc0?autoplay=1" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    // Script spécifique à la page du film
+    document.addEventListener("DOMContentLoaded", () => {
+      // Initialiser le mode sombre
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      if (darkModeToggle) {
+        // Vérifier si le mode sombre est activé dans le localStorage
+        const isDarkMode = localStorage.getItem("darkMode") === "true";
+        if (isDarkMode) {
+          document.body.classList.add("dark-mode");
+          const icon = darkModeToggle.querySelector("i");
+          if (icon) {
+            icon.className = "fas fa-sun";
+          }
+        }
+
+        // Ajouter l'écouteur d'événement pour le toggle
+        darkModeToggle.addEventListener("click", () => {
+          document.body.classList.toggle("dark-mode");
+          const isDarkMode = document.body.classList.contains("dark-mode");
+          localStorage.setItem("darkMode", isDarkMode);
+
+          // Changer l'icône
+          const icon = darkModeToggle.querySelector("i");
+          if (icon) {
+            icon.className = isDarkMode ? "fas fa-sun" : "fas fa-moon";
+          }
+        });
+      }
+
+      // Initialiser le menu mobile
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      }
+
+      // Initialiser la recherche
+      const searchInput = document.getElementById("searchInput");
+      const searchButton = document.getElementById("searchButton");
+      if (searchInput && searchButton) {
+        // Fonction de recherche
+        const performSearch = () => {
+          const query = searchInput.value.trim();
+          if (query) {
+            window.location.href = `catalogue.html?search=${encodeURIComponent(query)}`;
+          }
+        };
+
+        // Écouteur pour le bouton de recherche
+        searchButton.addEventListener("click", performSearch);
+
+        // Écouteur pour la touche Entrée
+        searchInput.addEventListener("keypress", (event) => {
+          if (event.key === "Enter") {
+            performSearch();
+          }
+        });
+      }
+
+      // Gérer les boutons de bande-annonce et de lecture
+      const trailerButton = document.getElementById("trailerButton");
+      const watchButton = document.getElementById("watchButton");
+      const trailerModal = document.getElementById("trailerModal");
+      const videoModal = document.getElementById("videoModal");
+      const closeTrailer = document.querySelector(".close-trailer");
+      const closeVideo = document.querySelector(".close-video");
+
+      if (trailerButton && trailerModal) {
+        trailerButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          trailerModal.style.display = "flex";
+        });
+      }
+
+      if (watchButton && videoModal) {
+        watchButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          videoModal.style.display = "flex";
+        });
+      }
+
+      if (closeTrailer && trailerModal) {
+        closeTrailer.addEventListener("click", () => {
+          trailerModal.style.display = "none";
+        });
+
+        trailerModal.addEventListener("click", (e) => {
+          if (e.target === trailerModal) {
+            trailerModal.style.display = "none";
+          }
+        });
+      }
+
+      if (closeVideo && videoModal) {
+        closeVideo.addEventListener("click", () => {
+          videoModal.style.display = "none";
+        });
+
+        videoModal.addEventListener("click", (e) => {
+          if (e.target === videoModal) {
+            videoModal.style.display = "none";
+          }
+        });
+      }
+
+      // Charger les films similaires
+      const relatedMoviesContainer = document.getElementById("relatedMovies");
+      if (relatedMoviesContainer) {
+        // Récupérer les films similaires depuis data.js
+        const similarMovies = getSimilarMovies(1);
+        
+        // Afficher les films similaires
+        if (similarMovies.length > 0) {
+          relatedMoviesContainer.innerHTML = "";
+          similarMovies.forEach(movie => {
+            const movieCard = document.createElement("div");
+            movieCard.className = "movie-card";
+            movieCard.innerHTML = `
+              <div class="movie-poster">
+                <img src="${movie.poster}" alt="${movie.title}">
+                <div class="movie-rating">${movie.rating}/10</div>
+              </div>
+              <div class="movie-info">
+                <h3 class="movie-title">${movie.title}</h3>
+                <p class="movie-year">${movie.year}</p>
+              </div>
+            `;
+            
+            // Ajouter un écouteur d'événement pour rediriger vers la page du film
+            movieCard.addEventListener("click", () => {
+              window.location.href = `film-${movie.id}.html`;
+            });
+            
+            relatedMoviesContainer.appendChild(movieCard);
+          });
+        } else {
+          relatedMoviesContainer.innerHTML = '<div class="no-results">Aucun film similaire trouvé</div>';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+

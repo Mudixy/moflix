@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moflix - Votre Plateforme de Streaming</title>
+    <title>Catalogue - Moflix</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="img/favicon-1.png">
@@ -18,8 +18,8 @@
                 <i class="fas fa-bars"></i>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Accueil</a></li>
-                <li><a href="catalogue.html">Films</a></li>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="catalogue.html" class="active">Films</a></li>
                 <li><a href="series.html">Séries</a></li>
                 <li><a href="#" id="darkModeToggle"><i class="fas fa-moon"></i></a></li>
             </ul>
@@ -28,51 +28,31 @@
                 <button id="searchButton"><i class="fas fa-search"></i></button>
             </div>
         </nav>
-        <div class="hero">
-            <div class="hero-content">
-                <h2>Découvrez nos films et séries</h2>
-                <p>Des classiques aux nouveautés, trouvez votre prochain programme préféré avec Moflix !</p>
-                <a href="catalogue.html" class="cta-button">Explorer le catalogue</a>
-            </div>
-        </div>
     </header>
 
     <main>
-        <section class="featured-section">
-            <h2 class="section-title">Films à l'affiche</h2>
-            <div class="featured-grid" id="featuredMovies">
-                <!-- Les films à l'affiche seront chargés ici par JavaScript -->
+        <section class="catalogue-header">
+            <h1>Catalogue de Films</h1>
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="categoryFilter">Catégorie :</label>
+                    <select id="categoryFilter">
+                        <option value="">Toutes les catégories</option>
+                        <!-- Les catégories seront générées par JavaScript -->
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="yearFilter">Année :</label>
+                    <select id="yearFilter">
+                        <option value="">Toutes les années</option>
+                        <!-- Les années seront générées par JavaScript -->
+                    </select>
+                </div>
             </div>
         </section>
 
-        <section class="categories-section">
-            <h2 class="section-title">Catégories</h2>
-            <div class="categories-grid">
-                <div class="category-card" data-category="action">
-                    <div class="category-icon"><i class="fas fa-fire"></i></div>
-                    <h3>Action</h3>
-                </div>
-                <div class="category-card" data-category="comédie">
-                    <div class="category-icon"><i class="fas fa-laugh"></i></div>
-                    <h3>Comédie</h3>
-                </div>
-                <div class="category-card" data-category="drame">
-                    <div class="category-icon"><i class="fas fa-theater-masks"></i></div>
-                    <h3>Drame</h3>
-                </div>
-                <div class="category-card" data-category="science-fiction">
-                    <div class="category-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>Science-Fiction</h3>
-                </div>
-                <div class="category-card" data-category="thriller">
-                    <div class="category-icon"><i class="fas fa-ghost"></i></div>
-                    <h3>Thriller</h3>
-                </div>
-                <div class="category-card" data-category="animation">
-                    <div class="category-icon"><i class="fas fa-child"></i></div>
-                    <h3>Animation</h3>
-                </div>
-            </div>
+        <section class="catalogue-grid" id="movieCatalogue">
+            <!-- Le catalogue de films sera chargé ici par JavaScript -->
         </section>
     </main>
 

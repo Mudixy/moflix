@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TITRE_DU_FILM - CinéStream</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="img/favicon-1.png">
+</head>
+<body>
+  <header>
+      <nav>
+          <div class="logo">
+              <h1>CinéStream</h1>
+          </div>
+          <div class="menu-toggle">
+              <i class="fas fa-bars"></i>
+          </div>
+          <ul class="nav-links">
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="catalogue.html">Catalogue</a></li>
+              <li><a href="#" id="darkModeToggle"><i class="fas fa-moon"></i></a></li>
+          </ul>
+          <div class="search-container">
+              <input type="text" id="searchInput" placeholder="Rechercher...">
+              <button id="searchButton"><i class="fas fa-search"></i></button>
+          </div>
+      </nav>
+  </header>
+
+  <main>
+      <div class="movie-detail-container">
+          <div class="movie-backdrop" style="background-image: url('BACKDROP_URL')">
+            <div class="movie-poster-detail">
+              <img src="POSTER_URL" alt="TITRE_DU_FILM">
+            </div>
+          </div>
+          <div class="movie-info-detail">
+            <h1 class="movie-title-detail">TITRE_DU_FILM</h1>
+            <div class="movie-meta">
+              <span>ANNEE_DU_FILM</span>
+              <span>•</span>
+              <span>DUREE_DU_FILM</span>
+              <span>•</span>
+              <span>Réalisé par REALISATEUR_DU_FILM</span>
+              <span>•</span>
+              <div class="movie-rating-detail">
+                <i class="fas fa-star"></i>
+                <span>NOTE_DU_FILM/10</span>
+              </div>
+            </div>
+            <div class="movie-categories">
+              CATEGORIES_DU_FILM
+            </div>
+            <div class="movie-description">
+              <p>DESCRIPTION_DU_FILM</p>
+            </div>
+            <div class="movie-actions">
+              <a href="#" class="watch-button" id="watchButton">
+                <i class="fas fa-play"></i>
+                Regarder
+              </a>
+              <a href="#" class="trailer-button" id="trailerButton">
+                <i class="fas fa-film"></i>
+                Bande-annonce
+              </a>
+            </div>
+          </div>
+      </div>
+
+      <section class="related-movies">
+          <h2 class="section-title">Films similaires</h2>
+          <div class="related-grid" id="relatedMovies">
+              <!-- Les films similaires seront chargés ici par JavaScript -->
+          </div>
+      </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <h2>Moflix</h2>
+            <p>Votre plateforme de streaming préférée</p>
+        </div>
+        <div class="footer-links">
+            <h3>Liens rapides</h3>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="series.html">Séries</a></li>
+                <li><a href="#">À propos</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-newsletter">
+            <h3>Rejoignez notre Instagram !</h3>
+            <div class="newsletter-form">
+                <a href="https://instagram.com/moflixtv"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Moflix. Tous droits réservés.</p>
+    </div>
+</footer>
+
+  <!-- Modals pour la bande-annonce et le lecteur vidéo -->
+  <div class="trailer-modal" id="trailerModal">
+    <div class="close-trailer">&times;</div>
+    <div class="trailer-container">
+      <iframe src="TRAILER_URL" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="video-modal" id="videoModal">
+    <div class="close-video">&times;</div>
+    <div class="video-container">
+      <iframe src="VIDEO_URL" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    // Script spécifique à la page du film
+    document.addEventListener("DOMContentLoaded", () => {
+      // Initialiser le mode sombre
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      if (darkModeToggle) {
+        // Vérifier si le mode sombre est activé dans le localStorage
+        const isDarkMode = localStorage.getItem("darkMode") === "true";
+        if (isDarkMode) {
+          document.body.classList.add("dark-mode");
+          const icon = darkModeToggle.querySelector("i");
+          if (icon) {
+            icon.className = "fas fa-sun";
+          }
+        }
+
+        // Ajouter l'écouteur d'événement pour le toggle
+        darkModeToggle.addEventListener("click", () => {
+          document.body.classList.toggle("dark-mode");
+          const isDarkMode = document.body.classList.contains("dark-mode");
+          localStorage.setItem("darkMode", isDarkMode);
+
+          // Changer l'icône
+          const icon = darkModeToggle.querySelector("i");
+          if (icon) {
+            icon.className = isDarkMode ? "fas fa-sun" : "fas fa-moon";
+          }
+        });
+      }
+
+      // Initialiser le menu mobile
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      }
+
+      // Initialiser la recherche
+      const searchInput = document.getElementById("searchInput");
+      const searchButton = document.getElementById("searchButton");
+      if (searchInput && searchButton) {
+        // Fonction de recherche
+        const performSearch = () => {
+          const query = searchInput.value.trim();
+          if (query) {
+            window.location.href = `catalogue.html?search=${encodeURIComponent(query)}`;
+          }
+        };
+
+        // Écouteur pour le bouton de recherche
+        searchButton.addEventListener("click", performSearch);
+
+        // Écouteur pour la touche Entrée
+        searchInput.addEventListener("keypress", (event) => {
+          if (event.key === "Enter") {
+            performSearch();
+          }
+        });
+      }
+
+      // Gérer les boutons de bande-annonce et de lecture
+      const trailerButton = document.getElementById("trailerButton");
+      const watchButton = document.getElementById("watchButton");
+      const trailerModal = document.getElementById("trailerModal");
+      const videoModal = document.getElementById("videoModal");
+      const closeTrailer = document.querySelector(".close-trailer");
+      const closeVideo = document.querySelector(".close-video");
+
+      if (trailerButton && trailerModal) {
+        trailerButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          trailerModal.style.display = "flex";
+        });
+      }
+
+      if (watchButton && videoModal) {
+        watchButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          videoModal.style.display = "flex";
+        });
+      }
+
+      if (closeTrailer && trailerModal) {
+        closeTrailer.addEventListener("click", () => {
+          trailerModal.style.display = "none";
+        });
+
+        trailerModal.addEventListener("click", (e) => {
+          if (e.target === trailerModal) {
+            trailerModal.style.display = "none";
+          }
+        });
+      }
+
+      if (closeVideo && videoModal) {
+        closeVideo.addEventListener("click", () => {
+          videoModal.style.display = "none";
+        });
+
+        videoModal.addEventListener("click", (e) => {
+          if (e.target === videoModal) {
+            videoModal.style.display = "none";
+          }
+        });
+      }
+
+      // Charger les films similaires
+      const relatedMoviesContainer = document.getElementById("relatedMovies");
+      if (relatedMoviesContainer) {
+        // Récupérer les films similaires depuis data.js
+        // Ici, nous utilisons l'ID du film actuel pour trouver des films similaires
+        const currentFilmId = FILM_ID; // Sera remplacé par l'ID réel du film
+        const similarMovies = getSimilarMovies(currentFilmId);
+        
+        // Afficher les films similaires
+        if (similarMovies.length > 0) {
+          relatedMoviesContainer.innerHTML = "";
+          similarMovies.forEach(movie => {
+            const movieCard = document.createElement("div");
+            movieCard.className = "movie-card";
+            movieCard.innerHTML = `
+              <div class="movie-poster">
+                <img src="${movie.poster}" alt="${movie.title}">
+                <div class="movie-rating">${movie.rating}/10</div>
+              </div>
+              <div class="movie-info">
+                <h3 class="movie-title">${movie.title}</h3>
+                <p class="movie-year">${movie.year}</p>
+              </div>
+            `;
+            
+            // Ajouter un écouteur d'événement pour rediriger vers la page du film
+            movieCard.addEventListener("click", () => {
+              window.location.href = `film-${movie.id}.html`;
+            });
+            
+            relatedMoviesContainer.appendChild(movieCard);
+          });
+        } else {
+          relatedMoviesContainer.innerHTML = '<div class="no-results">Aucun film similaire trouvé</div>';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

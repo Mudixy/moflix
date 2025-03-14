@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Résultats de recherche - Moflix</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" type="image/png" href="img/favicon-1.png">
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo">
+            <h1>Moflix</h1>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="catalogue.html">Films</a></li>
+            <li><a href="series.html">Séries</a></li>
+            <li><a href="#" id="darkModeToggle"><i class="fas fa-moon"></i></a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Rechercher...">
+            <button id="searchButton"><i class="fas fa-search"></i></button>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="page-header">
+        <h1>Résultats de recherche pour: <span id="searchQuery"></span></h1>
+        
+        <div class="search-tabs">
+            <button class="tab-btn active" data-tab="all">Tous</button>
+            <button class="tab-btn" data-tab="movies">Films</button>
+            <button class="tab-btn" data-tab="series">Séries</button>
+        </div>
+        
+        <div class="tab-content active" id="allResults">
+            <div class="catalogue-grid" id="allResultsGrid">
+                <!-- Résultats combinés seront chargés ici par JavaScript -->
+            </div>
+        </div>
+        
+        <div class="tab-content" id="moviesResults">
+            <div class="catalogue-grid" id="moviesResultsGrid">
+                <!-- Résultats de films seront chargés ici par JavaScript -->
+            </div>
+        </div>
+        
+        <div class="tab-content" id="seriesResults">
+            <div class="catalogue-grid" id="seriesResultsGrid">
+                <!-- Résultats de séries seront chargés ici par JavaScript -->
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <h2>Moflix</h2>
+            <p>Votre plateforme de streaming préférée</p>
+        </div>
+        <div class="footer-links">
+            <h3>Liens rapides</h3>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="series.html">Séries</a></li>
+                <li><a href="#">À propos</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-newsletter">
+            <h3>Rejoignez notre Instagram !</h3>
+            <div class="newsletter-form">
+                <a href="https://instagram.com/moflixtv"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Moflix. Tous droits réservés.</p>
+    </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="series-data.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Initialiser le mode sombre
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    if (darkModeToggle) {
+        // Vérifier si le mode sombre est activé dans le localStorage
+        const isDarkMode = localStorage.getItem("darkMode") === "true";
+        if (isDarkMode) {
+            document.body.classList.add("dark-mode");
+            const icon = darkModeToggle.querySelector("i");
+            if (icon) {
+                icon.className = "fas fa-sun";
+            }
+        }
+
+        // Ajouter l'écouteur d'événement pour le toggle
+        darkModeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            const isDarkMode = document.body.classList.contains("dark-mode");
+            localStorage.setItem("darkMode", isDarkMode);
+
+            // Changer l'icône
+            const icon = darkModeToggle.querySelector("i");
+            if (icon) {
+                icon.className = isDarkMode ? "fas fa-sun" : "fas fa-moon";
+            }
+        });
+    }
+
+    // Initialiser le menu mobile
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+    }
+    
+    // Récupérer la requête de recherche depuis l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('q') || "";
+    
+    // Afficher la requête de recherche
+    const searchQueryElement = document.getElementById("searchQuery");
+    if (searchQueryElement) {
+        searchQueryElement.textContent = searchQuery;
+    }
+    
+    // Si aucune requête, afficher un message
+    if (!searchQuery) {
+        const allResultsGrid = document.getElementById("allResultsGrid");
+        if (allResultsGrid) {
+            allResultsGrid.innerHTML = '<div class="no-results">Veuillez saisir un terme de recherche</div>';
+        }
+        return;
+    }
+    
+    // Fonction pour créer une carte de média (film ou série)
+    function createMediaCard(item, type) {
+        const card = document.createElement("div");
+        card.className = "movie-card";
+        
+        const title = item.title;
+        const year = item.year;
+        const poster = item.poster;
+        const rating = item.rating;
+        const id = item.id;
+        
+        card.innerHTML = `
+            <div class="movie-poster">
+                <img src="${poster}" alt="${title}">
+                <div class="movie-rating">${rating}/10</div>
+            </div>
+            <div class="movie-info">
+                <h3 class="movie-title">${title}</h3>
+                <p class="movie-year">${year}</p>
+            </div>
+        `;
+        
+        // Ajouter un écouteur d'événement pour rediriger vers la page de détails
+        card.addEventListener("click", () => {
+            if (type === "movie") {
+                window.location.href = `film-${id}.html`;
+            } else {
+                window.location.href = `serie-${id}.html`;
+            }
+        });
+        
+        return card;
+    }
+    
+    // Rechercher dans les films
+    const searchMoviesResults = searchMovies ? searchMovies(searchQuery) : [];
+    
+    // Rechercher dans les séries
+    const searchSeriesResults = searchSeries ? searchSeries(searchQuery) : [];
+    
+    // Combiner les résultats
+    const allResults = [...searchMoviesResults, ...searchSeriesResults];
+    
+    // Afficher les résultats combinés
+    const allResultsGrid = document.getElementById("allResultsGrid");
+    if (allResultsGrid) {
+        if (allResults.length > 0) {
+            allResultsGrid.innerHTML = "";
+            searchMoviesResults.forEach(movie => {
+                allResultsGrid.appendChild(createMediaCard(movie, "movie"));
+            });
+            searchSeriesResults.forEach(serie => {
+                allResultsGrid.appendChild(createMediaCard(serie, "serie"));
+            });
+        } else {
+            allResultsGrid.innerHTML = '<div class="no-results">Aucun résultat trouvé pour cette recherche</div>';
+        }
+    }
+    
+    // Afficher les résultats de films
+    const moviesResultsGrid = document.getElementById("moviesResultsGrid");
+    if (moviesResultsGrid) {
+        if (searchMoviesResults.length > 0) {
+            moviesResultsGrid.innerHTML = "";
+            searchMoviesResults.forEach(movie => {
+                moviesResultsGrid.appendChild(createMediaCard(movie, "movie"));
+            });
+        } else {
+            moviesResultsGrid.innerHTML = '<div class="no-results">Aucun film trouvé pour cette recherche</div>';
+        }
+    }
+    
+    // Afficher les résultats de séries
+    const seriesResultsGrid = document.getElementById("seriesResultsGrid");
+    if (seriesResultsGrid) {
+        if (searchSeriesResults.length > 0) {
+            seriesResultsGrid.innerHTML = "";
+            searchSeriesResults.forEach(serie => {
+                seriesResultsGrid.appendChild(createMediaCard(serie, "serie"));
+            });
+        } else {
+            seriesResultsGrid.innerHTML = '<div class="no-results">Aucune série trouvée pour cette recherche</div>';
+        }
+    }
+    
+    // Gérer les onglets
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
+    
+    tabButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            // Désactiver tous les onglets
+            tabButtons.forEach(btn => btn.classList.remove("active"));
+            tabContents.forEach(content => content.classList.remove("active"));
+            
+            // Activer l'onglet cliqué
+            button.classList.add("active");
+            const tabId = button.dataset.tab;
+            document.getElementById(`${tabId}Results`).classList.add("active");
+        });
+    });
+    
+    // Initialiser la recherche pour permettre de nouvelles recherches
+    const searchInput = document.getElementById("searchInput");
+    const searchButton = document.getElementById("searchButton");
+    
+    if (searchInput && searchButton) {
+        searchInput.value = searchQuery;
+        
+        const performSearch = () => {
+            const query = searchInput.value.trim();
+            if (query) {
+                window.location.href = `search-results.html?q=${encodeURIComponent(query)}`;
+            }
+        };
+        
+        searchButton.addEventListener("click", performSearch);
+        searchInput.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                performSearch();
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bref. - Moflix</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" type="image/png" href="img/favicon-1.png">
+<style>
+  /* Style pour l'iframe */
+  .video-iframe-container {
+    width: 70%;
+    height: 0;
+    padding-bottom: 39.375%;
+    position: relative;
+    background-color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 30px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .video-iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  /* Style pour les sélecteurs de saison et d'épisode */
+  .season-episode-selector {
+    margin: 30px auto;
+    width: 70%;
+    background-color: var(--card-dark);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .selector-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .selector-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-light);
+  }
+  
+  .selector-controls {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .selector-dropdown {
+    position: relative;
+  }
+  
+  .selector-dropdown select {
+    appearance: none;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    border: 1px solid var(--border-dark);
+    border-radius: 4px;
+    padding: 8px 30px 8px 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    min-width: 150px;
+  }
+  
+  .selector-dropdown::after {
+    content: '\f107';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--primary-color);
+  }
+  
+  .episode-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .episode-card {
+    background-color: var(--background-dark);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .episode-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .episode-thumbnail {
+    position: relative;
+    height: 140px;
+    overflow: hidden;
+  }
+  
+  .episode-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .episode-number {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  
+  .episode-duration {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+  }
+  
+  .episode-info {
+    padding: 12px;
+  }
+  
+  .episode-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .episode-description {
+    font-size: 0.85rem;
+    color: #aaa;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Style pour les informations de l'épisode en cours */
+  .current-episode-info {
+    width: 70%;
+    margin: 0 auto 20px;
+  }
+  
+  .current-episode-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .current-episode-details {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 10px;
+  }
+  
+  .current-episode-description {
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo">
+            <h1>Moflix</h1>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="catalogue.html">Films</a></li>
+          <li><a href="series.html">Séries</a></li>
+          <li><a href="#" id="darkModeToggle"><i class="fas fa-moon"></i></a></li>
+      </ul>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Rechercher...">
+            <button id="searchButton"><i class="fas fa-search"></i></button>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="movie-detail-container">
+        <div class="movie-backdrop" style="background-image: url('https://image.tmdb.org/t/p/original/fcIlUK2WJYyqI9AvDWDyYeElZyV.jpg')">
+          <div class="movie-poster-detail">
+            <img src="https://image.tmdb.org/t/p/original/alaRcixeZ1lLVb5NuvmJnAsfbyA.jpg" alt="Bref.">
+          </div>
+        </div>
+        <div class="movie-info-detail">
+          <h1 class="movie-title-detail">Bref.</h1>
+          <div class="movie-meta">
+            <span>2011</span>
+            <span>•</span>
+            <span>2 saisons</span>
+            <span>•</span>
+            <span>Créé par Kyan Khojandi & Bruno Muschio</span>
+            <span>•</span>
+            <div class="movie-rating-detail">
+              <i class="fas fa-star"></i>
+              <span>8.1/10</span>
+            </div>
+          </div>
+          <div class="movie-categories">
+            <span class="movie-category">Comédie</span>
+            <span class="movie-category">Drame</span>
+          </div>
+          <div class="movie-description">
+            <p>Un trentenaire au chômage, obsédé par une fille rencontrée en soirée, fait part de ses états d'âme et de ses réflexions sur les problèmes du quotidien.</p>
+          </div>
+        </div>
+    </div>
+    
+    <!-- Sélecteur de saison et d'épisode -->
+    <div class="season-episode-selector">
+        <div class="selector-header">
+            <div class="selector-title">Saisons & Épisodes</div>
+            <div class="selector-controls">
+                <div class="selector-dropdown">
+                    <select id="seasonSelector">
+                        <!-- Options de saison seront générées par JavaScript -->
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="episode-list" id="episodeList">
+            <!-- Les épisodes seront générés par JavaScript -->
+        </div>
+    </div>
+    
+    <!-- Informations sur l'épisode en cours -->
+    <div class="current-episode-info" id="currentEpisodeInfo" style="display: none;">
+        <h3 class="current-episode-title" id="currentEpisodeTitle"></h3>
+        <div class="current-episode-details">
+            <span id="currentEpisodeNumber"></span>
+            <span>•</span>
+            <span id="currentEpisodeDuration"></span>
+        </div>
+        <p class="current-episode-description" id="currentEpisodeDescription"></p>
+    </div>
+    
+    <!-- Lecteur vidéo iframe -->
+    <div class="video-iframe-container" id="episodePlayer" style="display: none;">
+        <iframe 
+          id="videoIframe"
+          src="/placeholder.svg" 
+          allowfullscreen 
+          allow="autoplay; encrypted-media">
+        </iframe>
+    </div>
+
+    <section class="related-movies">
+        <h2 class="section-title">Séries similaires</h2>
+        <div class="related-grid" id="relatedSeries">
+            <!-- Les séries similaires seront chargées ici par JavaScript -->
+        </div>
+    </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+      <div class="footer-logo">
+          <h2>Moflix</h2>
+          <p>Votre plateforme de streaming préférée</p>
+      </div>
+      <div class="footer-links">
+          <h3>Liens rapides</h3>
+          <ul>
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="catalogue.html">Catalogue</a></li>
+              <li><a href="series.html">Séries</a></li>
+              <li><a href="#">À propos</a></li>
+              <li><a href="#">Contact</a></li>
+          </ul>
+      </div>
+      <div class="footer-newsletter">
+          <h3>Rejoignez notre Instagram !</h3>
+          <div class="newsletter-form">
+              <a href="https://instagram.com/moflixtv"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+      </div>
+  </div>
+  <div class="footer-bottom">
+      <p>© 2025 Moflix. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<!-- Modal pour la bande-annonce -->
+<div class="trailer-modal" id="trailerModal">
+  <div class="close-trailer">&times;</div>
+  <div class="trailer-container">
+    <iframe src="https://www.youtube.com/embed/KPLWWIOCOOQ" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script src="series-data.js"></script>
+<script>
+  // Script spécifique à la page de série
+  document.addEventListener("DOMContentLoaded", () => {
+    // Initialiser le mode sombre
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    if (darkModeToggle) {
+      // Vérifier si le mode sombre est activé dans le localStorage
+      const isDarkMode = localStorage.getItem("darkMode") === "true";
+      if (isDarkMode) {
+        document.body.classList.add("dark-mode");
+        const icon = darkModeToggle.querySelector("i");
+        if (icon) {
+          icon.className = "fas fa-sun";
+        }
+      }
+
+      // Ajouter l'écouteur d'événement pour le toggle
+      darkModeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        const isDarkMode = document.body.classList.contains("dark-mode");
+        localStorage.setItem("darkMode", isDarkMode);
+
+        // Changer l'icône
+        const icon = darkModeToggle.querySelector("i");
+        if (icon) {
+          icon.className = isDarkMode ? "fas fa-sun" : "fas fa-moon";
+        }
+      });
+    }
+
+    // Initialiser le menu mobile
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    }
+
+    // Initialiser la recherche
+const searchInput = document.getElementById("searchInput");
+const searchButton = document.getElementById("searchButton");
+
+if (searchInput && searchButton) {
+  // Fonction de recherche
+  const performSearch = () => {
+    const query = searchInput.value.trim();
+    if (query) {
+      window.location.href = `search-results.html?q=${encodeURIComponent(query)}`;
+    }
+  };
+  
+  // Écouteur pour le bouton de recherche
+  searchButton.addEventListener("click", performSearch);
+  
+  // Écouteur pour la touche Entrée
+  searchInput.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      performSearch();
+    }
+  });
+}
+
+    // Gérer le bouton de bande-annonce
+    const trailerButton = document.getElementById("trailerButton");
+    const trailerModal = document.getElementById("trailerModal");
+    const closeTrailer = document.querySelector(".close-trailer");
+
+    if (trailerButton && trailerModal) {
+      trailerButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        trailerModal.style.display = "flex";
+      });
+    }
+
+    if (closeTrailer && trailerModal) {
+      closeTrailer.addEventListener("click", () => {
+        trailerModal.style.display = "none";
+      });
+
+      trailerModal.addEventListener("click", (e) => {
+        if (e.target === trailerModal) {
+          trailerModal.style.display = "none";
+        }
+      });
+    }
+    
+    // Récupérer l'ID de la série depuis l'URL ou utiliser une valeur par défaut
+    const serieId = 60715; // Bref.2
+    
+    // Récupérer les données de la série
+    const serie = getSerieById(serieId);
+    
+    if (!serie) {
+      console.error("Série non trouvée");
+      return;
+    }
+    
+    // Initialiser le sélecteur de saison
+    const seasonSelector = document.getElementById("seasonSelector");
+    const episodeList = document.getElementById("episodeList");
+    const videoIframe = document.getElementById("videoIframe");
+    const episodePlayer = document.getElementById("episodePlayer");
+    const currentEpisodeInfo = document.getElementById("currentEpisodeInfo");
+    const currentEpisodeTitle = document.getElementById("currentEpisodeTitle");
+    const currentEpisodeNumber = document.getElementById("currentEpisodeNumber");
+    const currentEpisodeDuration = document.getElementById("currentEpisodeDuration");
+    const currentEpisodeDescription = document.getElementById("currentEpisodeDescription");
+    
+    // Remplir le sélecteur de saison
+    serie.seasons.forEach((season, index) => {
+      const option = document.createElement("option");
+      option.value = index;
+      option.textContent = `Saison ${season.number}`;
+      seasonSelector.appendChild(option);
+    });
+    
+    // Fonction pour afficher les épisodes d'une saison
+    function displayEpisodes(seasonIndex) {
+      const season = serie.seasons[seasonIndex];
+      
+      if (!season) return;
+      
+      episodeList.innerHTML = "";
+      
+      season.episodes.forEach((episode, index) => {
+        const episodeCard = document.createElement("div");
+        episodeCard.className = "episode-card";
+        episodeCard.dataset.index = index;
+        
+        episodeCard.innerHTML = `
+          <div class="episode-thumbnail">
+            <img src="${episode.thumbnail}" alt="${episode.title}">
+            <div class="episode-number">E${episode.number}</div>
+            <div class="episode-duration">${episode.duration}</div>
+          </div>
+          <div class="episode-info">
+            <div class="episode-title">${episode.title}</div>
+            <div class="episode-description">${episode.description}</div>
+          </div>
+        `;
+        
+        // Ajouter un écouteur d'événement pour jouer l'épisode
+        episodeCard.addEventListener("click", () => {
+          playEpisode(seasonIndex, index);
+        });
+        
+        episodeList.appendChild(episodeCard);
+      });
+    }
+    
+    // Fonction pour jouer un épisode
+    function playEpisode(seasonIndex, episodeIndex) {
+      const season = serie.seasons[seasonIndex];
+      const episode = season.episodes[episodeIndex];
+      
+      if (!episode) return;
+      
+      // Mettre à jour les informations de l'épisode en cours
+      currentEpisodeTitle.textContent = episode.title;
+      currentEpisodeNumber.textContent = `Saison ${season.number}, Épisode ${episode.number}`;
+      currentEpisodeDuration.textContent = episode.duration;
+      currentEpisodeDescription.textContent = episode.description;
+      
+      // Afficher les informations et le lecteur
+      currentEpisodeInfo.style.display = "block";
+      episodePlayer.style.display = "block";
+      
+      // Mettre à jour la source de l'iframe
+      videoIframe.src = episode.videoUrl;
+      
+      // Faire défiler jusqu'au lecteur
+      episodePlayer.scrollIntoView({ behavior: "smooth" });
+    }
+    
+    // Écouteur d'événement pour le changement de saison
+    seasonSelector.addEventListener("change", () => {
+      const seasonIndex = parseInt(seasonSelector.value);
+      displayEpisodes(seasonIndex);
+    });
+    
+    // Afficher les épisodes de la première saison par défaut
+    displayEpisodes(0);
+    
+    // Gérer le bouton "Regarder"
+    const watchButton = document.getElementById("watchButton");
+    if (watchButton) {
+      watchButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        
+        // Jouer le premier épisode de la première saison
+        playEpisode(0, 0);
+      });
+    }
+    
+    // Charger les séries similaires
+    const relatedSeriesContainer = document.getElementById("relatedSeries");
+    if (relatedSeriesContainer) {
+      // Récupérer les séries similaires
+      const similarSeries = getSimilarSeries(serieId);
+      
+      // Afficher les séries similaires
+      if (similarSeries.length > 0) {
+        relatedSeriesContainer.innerHTML = "";
+        similarSeries.forEach(serie => {
+          const serieCard = document.createElement("div");
+          serieCard.className = "movie-card";
+          serieCard.innerHTML = `
+            <div class="movie-poster">
+              <img src="${serie.poster}" alt="${serie.title}">
+              <div class="movie-rating">${serie.rating}/10</div>
+            </div>
+            <div class="movie-info">
+              <h3 class="movie-title">${serie.title}</h3>
+              <p class="movie-year">${serie.year}</p>
+            </div>
+          `;
+          
+          // Ajouter un écouteur d'événement pour rediriger vers la page de la série
+          serieCard.addEventListener("click", () => {
+            window.location.href = `serie-${serie.id}.html`;
+          });
+          
+          relatedSeriesContainer.appendChild(serieCard);
+        });
+      } else {
+        relatedSeriesContainer.innerHTML = '<div class="no-results">Aucune série similaire trouvée</div>';
+      }
+    }
+  });
+</script>
+</body>
+</html>
+

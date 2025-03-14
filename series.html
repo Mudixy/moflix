@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séries TV - Moflix</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" type="image/png" href="img/favicon-1.png">
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo">
+            <h1>Moflix</h1>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="catalogue.html">Films</a></li>
+            <li><a href="series.html" class="active">Séries</a></li>
+            <li><a href="#" id="darkModeToggle"><i class="fas fa-moon"></i></a></li>
+        </ul>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Rechercher...">
+            <button id="searchButton"><i class="fas fa-search"></i></button>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="catalogue-header">
+        <h1>Catalogue de Séries</h1>
+        <div class="filter-container">
+            <div class="filter-group">
+                <label for="genreFilter">Genre :</label>
+                <select id="genreFilter">
+                    <option value="">Tous les genres</option>
+                    <option value="drame">Drame</option>
+                    <option value="fantastique">Fantastique</option>
+                    <option value="aventure">Aventure</option>
+                    <option value="crime">Crime</option>
+                    <option value="thriller">Thriller</option>
+                    <option value="horreur">Horreur</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="yearFilter">Année :</label>
+                <select id="yearFilter">
+                    <option value="">Toutes les années</option>
+                    <option value="2020">2020+</option>
+                    <option value="2015">2015-2019</option>
+                    <option value="2010">2010-2014</option>
+                    <option value="2000">2000-2009</option>
+                    <option value="1990">1990-1999</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="sortFilter">Trier par :</label>
+                <select id="sortFilter">
+                    <option value="popularity">Popularité</option>
+                    <option value="rating">Note</option>
+                    <option value="year">Date de sortie</option>
+                    <option value="title">Titre</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="catalogue-section">
+        <h2 class="section-title" id="resultsTitle">Toutes les séries</h2>
+        <div class="catalogue-grid" id="allSeries">
+            <!-- Toutes les séries seront chargées ici par JavaScript -->
+        </div>
+    </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+      <div class="footer-logo">
+          <h2>Moflix</h2>
+          <p>Votre plateforme de streaming préférée</p>
+      </div>
+      <div class="footer-links">
+          <h3>Liens rapides</h3>
+          <ul>
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="catalogue.html">Catalogue</a></li>
+              <li><a href="series.html">Séries</a></li>
+              <li><a href="#">À propos</a></li>
+              <li><a href="#">Contact</a></li>
+          </ul>
+      </div>
+      <div class="footer-newsletter">
+          <h3>Rejoignez notre Instagram !</h3>
+          <div class="newsletter-form">
+              <a href="https://instagram.com/moflixtv"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+      </div>
+  </div>
+  <div class="footer-bottom">
+      <p>© 2025 Moflix. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script src="series-data.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Initialiser le mode sombre
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    if (darkModeToggle) {
+      // Vérifier si le mode sombre est activé dans le localStorage
+      const isDarkMode = localStorage.getItem("darkMode") === "true";
+      if (isDarkMode) {
+        document.body.classList.add("dark-mode");
+        const icon = darkModeToggle.querySelector("i");
+        if (icon) {
+          icon.className = "fas fa-sun";
+        }
+      }
+
+      // Ajouter l'écouteur d'événement pour le toggle
+      darkModeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        const isDarkMode = document.body.classList.contains("dark-mode");
+        localStorage.setItem("darkMode", isDarkMode);
+
+        // Changer l'icône
+        const icon = darkModeToggle.querySelector("i");
+        if (icon) {
+          icon.className = isDarkMode ? "fas fa-sun" : "fas fa-moon";
+        }
+      });
+    }
+
+    // Initialiser le menu mobile
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    }
+
+    // Récupérer le paramètre de recherche depuis l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('search') || "";
+    
+    // Mettre à jour le champ de recherche avec la requête
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput && searchQuery) {
+      searchInput.value = searchQuery;
+    }
+
+    // Initialiser la recherche
+    if (searchInput) {
+      const searchButton = document.getElementById("searchButton");
+      
+      // Fonction de recherche
+      const performSearch = () => {
+        const query = searchInput.value.trim();
+        if (query) {
+          window.location.href = `series.html?search=${encodeURIComponent(query)}`;
+        }
+      };
+
+      // Écouteur pour le bouton de recherche
+      if (searchButton) {
+        searchButton.addEventListener("click", performSearch);
+      }
+
+      // Écouteur pour la touche Entrée
+      searchInput.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") {
+          performSearch();
+        }
+      });
+    }
+
+    // Fonction pour créer une carte de série
+    function createSerieCard(serie) {
+      const card = document.createElement("div");
+      card.className = "movie-card";
+      
+      card.innerHTML = `
+        <div class="movie-poster">
+          <img src="${serie.poster}" alt="${serie.title}">
+          <div class="movie-rating">${serie.rating}/10</div>
+        </div>
+        <div class="movie-info">
+          <h3 class="movie-title">${serie.title}</h3>
+          <p class="movie-year">${serie.year}</p>
+        </div>
+      `;
+      
+      // Ajouter un écouteur d'événement pour rediriger vers la page de la série
+      card.addEventListener("click", () => {
+        window.location.href = `serie-${serie.id}.html`;
+      });
+      
+      return card;
+    }
+
+    // Fonction pour rechercher des séries
+    function searchSeries(query) {
+      query = query.toLowerCase();
+      return getAllSeries().filter(
+        (serie) =>
+          serie.title.toLowerCase().includes(query) ||
+          (serie.creator && serie.creator.toLowerCase().includes(query)) ||
+          serie.categories.some((category) => category.toLowerCase().includes(query))
+      );
+    }
+
+    // Afficher les séries (toutes ou résultats de recherche)
+    const allSeriesContainer = document.getElementById("allSeries");
+    const resultsTitle = document.getElementById("resultsTitle");
+    
+    if (allSeriesContainer) {
+      let seriesToDisplay = [];
+      
+      // Si une recherche est en cours, afficher les résultats de recherche
+      if (searchQuery) {
+        seriesToDisplay = searchSeries(searchQuery);
+        if (resultsTitle) {
+          resultsTitle.textContent = `Résultats de recherche pour: "${searchQuery}"`;
+        }
+      } else {
+        // Sinon, afficher toutes les séries
+        seriesToDisplay = getAllSeries();
+      }
+      
+      if (seriesToDisplay.length > 0) {
+        allSeriesContainer.innerHTML = "";
+        seriesToDisplay.forEach(serie => {
+          allSeriesContainer.appendChild(createSerieCard(serie));
+        });
+      } else {
+        if (searchQuery) {
+          allSeriesContainer.innerHTML = '<div class="no-results">Aucune série ne correspond à votre recherche</div>';
+        } else {
+          allSeriesContainer.innerHTML = '<div class="no-results">Aucune série trouvée</div>';
+        }
+      }
+    }
+
+    // Gérer les filtres
+    const genreFilter = document.getElementById("genreFilter");
+    const yearFilter = document.getElementById("yearFilter");
+    const sortFilter = document.getElementById("sortFilter");
+
+    function applyFilters() {
+      const genre = genreFilter ? genreFilter.value : "";
+      const yearRange = yearFilter ? yearFilter.value : "";
+      const sortBy = sortFilter ? sortFilter.value : "popularity";
+
+      // Déterminer la source des séries (recherche ou toutes)
+      let filteredSeries = searchQuery ? searchSeries(searchQuery) : getAllSeries();
+
+      // Filtrer par genre
+      if (genre) {
+        filteredSeries = filteredSeries.filter(serie => serie.categories.includes(genre));
+      }
+
+      // Filtrer par année
+      if (yearRange) {
+        switch (yearRange) {
+          case "2020":
+            filteredSeries = filteredSeries.filter(serie => serie.year >= 2020);
+            break;
+          case "2015":
+            filteredSeries = filteredSeries.filter(serie => serie.year >= 2015 && serie.year < 2020);
+            break;
+          case "2010":
+            filteredSeries = filteredSeries.filter(serie => serie.year >= 2010 && serie.year < 2015);
+            break;
+          case "2000":
+            filteredSeries = filteredSeries.filter(serie => serie.year >= 2000 && serie.year < 2010);
+            break;
+          case "1990":
+            filteredSeries = filteredSeries.filter(serie => serie.year >= 1990 && serie.year < 2000);
+            break;
+        }
+      }
+
+      // Trier les séries
+      switch (sortBy) {
+        case "rating":
+          filteredSeries.sort((a, b) => b.rating - a.rating);
+          break;
+        case "year":
+          filteredSeries.sort((a, b) => b.year - a.year);
+          break;
+        case "title":
+          filteredSeries.sort((a, b) => a.title.localeCompare(b.title));
+          break;
+        // Par défaut, trier par popularité (featured first)
+        default:
+          filteredSeries.sort((a, b) => {
+            if (a.featured && !b.featured) return -1;
+            if (!a.featured && b.featured) return 1;
+            return b.rating - a.rating;
+          });
+      }
+
+      // Mettre à jour l'affichage
+      if (allSeriesContainer) {
+        allSeriesContainer.innerHTML = "";
+        
+        if (filteredSeries.length > 0) {
+          filteredSeries.forEach(serie => {
+            allSeriesContainer.appendChild(createSerieCard(serie));
+          });
+        } else {
+          if (searchQuery) {
+            allSeriesContainer.innerHTML = '<div class="no-results">Aucune série ne correspond à votre recherche et vos filtres</div>';
+          } else {
+            allSeriesContainer.innerHTML = '<div class="no-results">Aucune série ne correspond à vos critères</div>';
+          }
+        }
+      }
+    }
+
+    // Ajouter des écouteurs d'événements pour les filtres
+    if (genreFilter) {
+      genreFilter.addEventListener("change", applyFilters);
+    }
+
+    if (yearFilter) {
+      yearFilter.addEventListener("change", applyFilters);
+    }
+
+    if (sortFilter) {
+      sortFilter.addEventListener("change", applyFilters);
+    }
+  });
+</script>
+</body>
+</html>

@@ -598,6 +598,14 @@ document.addEventListener("DOMContentLoaded", () => {
         categories: ["action", "science-fiction"],
       },
       {
+        id: "77338",
+        title: "Intouchables",
+        poster: "https://image.tmdb.org/t/p/original/gdUJ6ECIHNE5M2HImGaBOfb8jR2.jpg",
+        rating: 8.3,
+        year: 2011,
+        categories: ["comédie", "drame"],
+      },
+      {
         id: "1440406",
         title: "Inside TPMP : les coulisses du talk n°1",
         poster: "https://image.tmdb.org/t/p/original/o42ITCQS2ZDBoT3HIGXvBsD58Sd.jpg",

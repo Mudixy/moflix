@@ -25,7 +25,7 @@ const series = [
                 duration: "39 min", 
                 description: "À la suite d’une discussion avec lui-même, « Je », âgé 40 ans, fait le choix de reprendre sa vie en main.", 
                 thumbnail: "https://image.tmdb.org/t/p/original/n4Tvf8nPmPz9yQmvVN2MM8LOJcj.jpg", 
-                videoUrl: "https://maxfinishseveral.com/e/yl45lahvnmhc", 
+                videoUrl: "https://cinecactus.xyz/series/Bref/S02/Bref-S02-E01.mp4", 
                 }, 
                 { 
                 number: 2, 
@@ -33,7 +33,7 @@ const series = [
                 duration: "33 min", 
                 description: "Des nouveautés dans la vie de « Je » (travail, colocataire, rencontres), permettent que les choses soient mises en place.", 
                 thumbnail: "https://image.tmdb.org/t/p/original/sIrZ7dj5Zsldx8nxH6ZDDRqgZPi.jpg", 
-                videoUrl: "https://maxfinishseveral.com/e/jeuq5nusihri", 
+                videoUrl: "https://cinecactus.xyz/series/Bref/S02/Bref-S02-E02.mp4", 
                 }, 
                 { 
                 number: 3, 
@@ -41,7 +41,7 @@ const series = [
                 duration: "33 min", 
                 description: "Un bouleversement vient chambouler sa famille. Comme à l’accoutumée, il scrute les attitudes de tout le monde.", 
                 thumbnail: "https://image.tmdb.org/t/p/original/wIKnVYbd68j77iOM2mlfeOPVhXk.jpg", 
-                videoUrl: "https://maxfinishseveral.com/e/oihuwikwwztw", 
+                videoUrl: "https://cinecactus.xyz/series/Bref/S02/Bref-S02-E03.mp4", 
                 },
                 { 
                 number: 4, 
@@ -49,7 +49,7 @@ const series = [
                 duration: "32 min", 
                 description: "Les nouvelles intentions sont bénéfiques. Mais il arrive des fois, que le temps écoulé vous rattrape.", 
                 thumbnail: "https://image.tmdb.org/t/p/original/xDney1wTZZQUZNugGqC3TGiaIbi.jpg", 
-                videoUrl: "https://maxfinishseveral.com/e/wiuay396vmqk", 
+                videoUrl: "https://cinecactus.xyz/series/Bref/S02/Bref-S02-E04.mp4", 
                 },
                 { 
                 number: 5, 
@@ -57,7 +57,7 @@ const series = [
                 duration: "41 min", 
                 description: "Plus rien ne va, tout s’écroule. Et si tous les efforts, n’avaient aucune utilité ?", 
                 thumbnail: "https://image.tmdb.org/t/p/original/qIINLYKAhzsdDe0w0BNNqODRnmD.jpg", 
-                videoUrl: "https://vidply.com/e/mppic3izcpn8",
+                videoUrl: "https://cinecactus.xyz/series/Bref/S02/Bref-S02-E05.mp4",
                 },
                 { 
                 number: 6, 
@@ -65,7 +65,7 @@ const series = [
                 duration: "40 min", 
                 description: "Ce qui s’est passé la veille, interroge. Est-ce que c’était important ?", 
                 thumbnail: "https://image.tmdb.org/t/p/original/w8nFtQd6v9oruMl3bpuQ8aY4ylu.jpg", 
-                videoUrl: "https://vidply.com/e/6ztcuv618wiy",
+                videoUrl: "https://cinecactus.xyz/series/Bref/S02/Bref-S02-E06.mp4",
                 },
             ]
           },

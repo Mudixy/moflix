@@ -574,6 +574,14 @@ document.addEventListener("DOMContentLoaded", () => {
         categories: ["thriller", "crime", "drame", "action"],
       },
       {
+        id: "915935",
+        title: "Anatomie d'une chute",
+        poster: "https://image.tmdb.org/t/p/original/vwpB79T0KGxqZSx0wormGC58OZB.jpg",
+        rating: 7.5,
+        year: 2023,
+        categories: ["thriller", "crime", "mystère"],
+      },
+      {
         id: "706503",
         title: "Balle Perdue",
         poster: "https://image.tmdb.org/t/p/original/nrJg7CB2FW35qXgGY0spq6EqDjD.jpg",

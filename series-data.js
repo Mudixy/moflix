@@ -72,6 +72,110 @@ const series = [
         ],
         featured: false,
     },
+    { // Frenchie Shore.
+      id: 239334,
+      title: "Frenchie Shore",
+      year: 2023,
+      creator: "",
+      rating: 7,
+      categories: ["télé-réalité"],
+      poster:
+        "https://image.tmdb.org/t/p/original/th98VuPadAIm9aPo9hzwsB6X6ht.jpg",
+      backdrop:
+        "https://image.tmdb.org/t/p/original/vdBcFmJqdTdQGH3i8pR0vu5LlXb.jpg",
+      description:
+        "Dans la lignée de Jersey shore et Geordie Shore, les 10 plus grands fêtards de France sont réunis au Cap d’Agde pour des vacances de rêve.",
+      trailer: "",
+      seasons: [
+        {
+          number: 1,
+          year: 2023,
+          episodes: [
+              { 
+              number: 1, 
+              title: "Bienvenue sur la Frenchie Shore", 
+              duration: "1h02",
+              description: "", 
+              thumbnail: "https://image.tmdb.org/t/p/original/vdBcFmJqdTdQGH3i8pR0vu5LlXb.jpg", 
+              videoUrl: "https://cinecactus.xyz/series/Frenchie-Shore/S01/Frenchie-Shore-S01-E01.mp4", 
+              }, 
+              { 
+              number: 2, 
+              title: "Dérapages non contrôlés", 
+              duration: "1h02", 
+              description: "", 
+              thumbnail: "https://image.tmdb.org/t/p/original/vdBcFmJqdTdQGH3i8pR0vu5LlXb.jpg", 
+              videoUrl: "https://cinecactus.xyz/series/Frenchie-Shore/S01/Frenchie-Shore-S01-E02.mp4", 
+              }, 
+              { 
+              number: 3, 
+              title: "L'art de ruiner ses vacances en 3 leçons", 
+              duration: "50 min", 
+              description: "", 
+              thumbnail: "https://image.tmdb.org/t/p/original/vdBcFmJqdTdQGH3i8pR0vu5LlXb.jpg", 
+              videoUrl: "https://cinecactus.xyz/series/Frenchie-Shore/S01/Frenchie-Shore-S01-E03.mp4", 
+              },
+              { 
+              number: 4, 
+              title: "Tous les Frenchies ont leur place sur la Frenchie Shore", 
+              duration: "59 min", 
+              description: "", 
+              thumbnail: "https://image.tmdb.org/t/p/original/vdBcFmJqdTdQGH3i8pR0vu5LlXb.jpg", 
+              videoUrl: "https://cinecactus.xyz/series/Frenchie-Shore/S01/Frenchie-Shore-S01-E04.mp4", 
+              },
+              { 
+              number: 5, 
+              title: "Suis moi je te fuis...", 
+              duration: "1h02", 
+              description: "", 
+              thumbnail: "https://image.tmdb.org/t/p/original/vdBcFmJqdTdQGH3i8pR0vu5LlXb.jpg", 
+              videoUrl: "https://cinecactus.xyz/series/Frenchie-Shore/S01/Frenchie-Shore-S01-E05.mp4",
+              },
+              { 
+              number: 6, 
+              title: "Le cul entre deux chaises", 
+              duration: "1h02", 
+              description: "", 
+              thumbnail: "https://image.tmdb.org/t/p/original/vdBcFmJqdTdQGH3i8pR0vu5LlXb.jpg", 
+              videoUrl: "https://cinecactus.xyz/series/Frenchie-Shore/S01/Frenchie-Shore-S01-E06.mp4",
+              },
+              { 
+              number: 7, 
+              title: "Double jeu dangereux", 
+              duration: "1h02", 
+              description: "", 
+              thumbnail: "https://image.tmdb.org/t/p/original/vdBcFmJqdTdQGH3i8pR0vu5LlXb.jpg", 
+              videoUrl: "https://cinecactus.xyz/series/Frenchie-Shore/S01/Frenchie-Shore-S01-E07.mp4",
+              },
+              { 
+              number: 8, 
+              title: "Les chaises musicales", 
+              duration: "1h02", 
+              description: "", 
+              thumbnail: "https://image.tmdb.org/t/p/original/vdBcFmJqdTdQGH3i8pR0vu5LlXb.jpg", 
+              videoUrl: "https://cinecactus.xyz/series/Frenchie-Shore/S01/Frenchie-Shore-S01-E08.mp4",
+              },
+              { 
+              number: 9, 
+              title: "Si tout était simple ils s'ennuieraient", 
+              duration: "1h02", 
+              description: "", 
+              thumbnail: "https://image.tmdb.org/t/p/original/vdBcFmJqdTdQGH3i8pR0vu5LlXb.jpg", 
+              videoUrl: "https://cinecactus.xyz/series/Frenchie-Shore/S01/Frenchie-Shore-S01-E09.mp4",
+              },
+              { 
+              number: 10, 
+              title: "C'est la fin", 
+              duration: "59 min", 
+              description: "", 
+              thumbnail: "https://image.tmdb.org/t/p/original/vdBcFmJqdTdQGH3i8pR0vu5LlXb.jpg", 
+              videoUrl: "https://cinecactus.xyz/series/Frenchie-Shore/S01/Frenchie-Shore-S01-E10.mp4",
+              },
+          ]
+        },
+      ],
+      featured: false,
+    },
     { // HPI.
       id: 112738,
       title: "HPI",
@@ -159,7 +263,7 @@ const series = [
         },
       ],
       featured: false,
-  },
+    }
   ]
   
   // Fonction pour obtenir une série par son ID

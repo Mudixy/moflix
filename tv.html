@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogue - Moflix</title>
+    <title>Moflix - Votre Plateforme de Streaming</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="img/favicon-1.png">
 </head>
 <body>
-    <header>
+  <header>
         <nav>
             <div class="logo">
                 <a href="index.html"><h1>Moflix</h1></a>  
@@ -19,9 +19,9 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="catalogue.html" class="active">Films</a></li>
+                <li><a href="catalogue.html">Films</a></li>
                 <li><a href="series.html">Séries</a></li>
-                <li><a href="tv.html">Télévision</a></li>
+                <li><a href="tv.html" class="active">Télévision</a></li>
                 <li><a href="#" id="darkModeToggle"><i class="fas fa-moon"></i></a></li>
             </ul>
             <div class="search-container">
@@ -29,39 +29,47 @@
                 <button id="searchButton"><i class="fas fa-search"></i></button>
             </div>
         </nav>
-    </header>
+  </header>
 
-      <div class="bandeau-rouge" id="bandeau">
+  <div class="bandeau-rouge" id="bandeau">
       🔴 L'utilisation d'un bloqueur de publicités est fortement recommandé. Nous ne pouvons être tenus responsables en cas d'incidents.
   </div>
 
-    <main>
-        <section class="catalogue-header">
-            <h1>Catalogue de Films</h1>
-            <div class="filter-container">
-                <div class="filter-group">
-                    <label for="categoryFilter">Catégorie :</label>
-                    <select id="categoryFilter">
-                        <option value="">Toutes les catégories</option>
-                        <!-- Les catégories seront générées par JavaScript -->
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="yearFilter">Année :</label>
-                    <select id="yearFilter">
-                        <option value="">Toutes les années</option>
-                        <!-- Les années seront générées par JavaScript -->
-                    </select>
-                </div>
-            </div>
-        </section>
 
-        <section class="catalogue-grid" id="movieCatalogue">
-            <!-- Le catalogue de films sera chargé ici par JavaScript -->
-        </section>
-    </main>
 
-    <footer>
+
+  <main class="catalogue">
+  <section class="catalogue-grid">
+
+    <div class="movie-card">
+      <a href="canalplus-direct.html">
+        <img src="https://i.ibb.co/GfcBvjYB/canal.png" alt="Canal+">
+      </a>
+    </div>
+
+    <div class="movie-card">
+      <a href="canalplussport-direct.html">
+        <img src="https://i.ibb.co/9kp88qjX/canalplussport.png" alt="Canal+ Sport">
+      </a>
+    </div>
+
+    <div class="movie-card">
+      <a href="canalplussport360-direct.html">
+        <img src="https://i.ibb.co/b5yrwbg9/CANAL-sport360.png" alt="Canal+ Sport 360">
+      </a>
+    </div>
+
+    <div class="movie-card">
+      <a href="canalplusfoot-direct.html">
+        <img src="https://i.ibb.co/Ld09pNd1/canalplusfoot.png" alt="Canal+ Foot">
+      </a>
+    </div>
+
+  </section>
+</main>
+
+
+  <footer>
         <div class="footer-content">
             <div class="footer-logo">
                 <h2>Moflix</h2>
@@ -87,9 +95,14 @@
         <div class="footer-bottom">
             <p>© 2025 Moflix. Tous droits réservés.</p>
         </div>
-    </footer>
+  </footer>
 
     <script src="data.js"></script>
     <script src="script.js"></script>
+
+  <script src="tv.js"></script> <!-- ou tv.js -->
+  <script>
+    displayTvChannels();
+  </script>
 </body>
 </html>

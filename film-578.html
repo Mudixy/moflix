@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TITRE_DU_FILM - Moflix</title>
+  <title>Les Dents de la Mer - Moflix</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/png" href="img/favicon-1.png">
@@ -12,16 +12,17 @@
   <header>
       <nav>
           <div class="logo">
-              <h1>Moflix</h1>
+            <a href="index.html"><h1>Moflix</h1></a>  
           </div>
           <div class="menu-toggle">
               <i class="fas fa-bars"></i>
           </div>
           <ul class="nav-links">
-              <li><a href="index.html">Accueil</a></li>
-              <li><a href="catalogue.html">Catalogue</a></li>
-              <li><a href="#" id="darkModeToggle"><i class="fas fa-moon"></i></a></li>
-          </ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="catalogue.html">Films</a></li>
+            <li><a href="series.html">Séries</a></li>
+            <li><a href="#" id="darkModeToggle"><i class="fas fa-moon"></i></a></li>
+        </ul>
           <div class="search-container">
               <input type="text" id="searchInput" placeholder="Rechercher...">
               <button id="searchButton"><i class="fas fa-search"></i></button>
@@ -31,50 +32,43 @@
 
   <main>
       <div class="movie-detail-container">
-          <div class="movie-backdrop" style="background-image: url('BACKDROP_URL')">
+          <div class="movie-backdrop" style="background-image: url('https://image.tmdb.org/t/p/original/3nYlM34QhzdtAvWRV5bN4nLtnTc.jpg')">
             <div class="movie-poster-detail">
-              <img src="POSTER_URL" alt="TITRE_DU_FILM">
+              <img src="https://image.tmdb.org/t/p/original/wuRf6gkX0JUJsu1MeECPubhMRdd.jpg" alt="Les Dents de la Mer">
             </div>
           </div>
           <div class="movie-info-detail">
-            <h1 class="movie-title-detail">TITRE_DU_FILM</h1>
+            <h1 class="movie-title-detail">Les Dents de la Mer</h1>
             <div class="movie-meta">
-              <span>ANNEE_DU_FILM</span>
+              <span>1975</span>
               <span>•</span>
-              <span>DUREE_DU_FILM</span>
+              <span>2h 04 min</span>
               <span>•</span>
-              <span>Réalisé par REALISATEUR_DU_FILM</span>
+              <span>Réalisé par Steven Spielberg</span>
               <span>•</span>
               <div class="movie-rating-detail">
                 <i class="fas fa-star"></i>
-                <span>NOTE_DU_FILM/10</span>
+                <span>7.7/10</span>
               </div>
             </div>
             <div class="movie-categories">
-              CATEGORIES_DU_FILM
+              <span class="movie-category">Aventure</span>
+              <span class="movie-category">Horreur</span>
+              <span class="movie-category">Thriller</span>
             </div>
             <div class="movie-description">
-              <p>DESCRIPTION_DU_FILM</p>
+              <p>À quelques jours du début de la saison estivale, les habitants de la petite station balnéaire d'Amity sont mis en émoi par la découverte sur le littoral du corps atrocement mutilé d'une jeune vacancière. Pour Martin Brody, le chef de la police, il ne fait aucun doute que la jeune fille a été victime d'un requin. Il décide alors d'interdire l'accès aux plages mais se heurte à l'hostilité du maire uniquement intéressé par l'afflux des touristes. Pendant ce temps, le requin continue à semer la terreur le long des côtes et à dévorer les baigneurs…</p>
             </div>
-            <div class="movie-actions">
-              <a href="#" class="watch-button" id="watchButton">
-                <i class="fas fa-play"></i>
-                Regarder
-              </a>
-              <a href="#" class="trailer-button" id="trailerButton">
-                <i class="fas fa-film"></i>
-                Bande-annonce
-              </a>
+            </div>
+            <div class="video-iframe-container">
+              <iframe 
+                src="https://cinecactus.xyz/movies/Les-Dents-de-la-mer.mp4"
+                allowfullscreen 
+                allow="autoplay; encrypted-media">
+              </iframe>
             </div>
           </div>
       </div>
-
-      <section class="related-movies">
-          <h2 class="section-title">Films similaires</h2>
-          <div class="related-grid" id="relatedMovies">
-              <!-- Les films similaires seront chargés ici par JavaScript -->
-          </div>
-      </section>
   </main>
 
   <footer>
@@ -104,21 +98,6 @@
         <p>© 2025 Moflix. Tous droits réservés.</p>
     </div>
 </footer>
-
-  <!-- Modals pour la bande-annonce et le lecteur vidéo -->
-  <div class="trailer-modal" id="trailerModal">
-    <div class="close-trailer">&times;</div>
-    <div class="trailer-container">
-      <iframe src="TRAILER_URL" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <div class="video-modal" id="videoModal">
-    <div class="close-video">&times;</div>
-    <div class="video-container">
-      <iframe src="VIDEO_URL" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
-    </div>
-  </div>
 
   <script src="data.js"></script>
   <script>
@@ -233,9 +212,7 @@
       const relatedMoviesContainer = document.getElementById("relatedMovies");
       if (relatedMoviesContainer) {
         // Récupérer les films similaires depuis data.js
-        // Ici, nous utilisons l'ID du film actuel pour trouver des films similaires
-        const currentFilmId = FILM_ID; // Sera remplacé par l'ID réel du film
-        const similarMovies = getSimilarMovies(currentFilmId);
+        const similarMovies = getSimilarMovies(1);
         
         // Afficher les films similaires
         if (similarMovies.length > 0) {
@@ -269,3 +246,4 @@
   </script>
 </body>
 </html>
+

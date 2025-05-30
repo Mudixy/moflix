@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TITRE_DU_FILM - Moflix</title>
+  <title>Canal+ - Moflix</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/png" href="img/favicon-1.png">
@@ -18,10 +18,12 @@
               <i class="fas fa-bars"></i>
           </div>
           <ul class="nav-links">
-              <li><a href="index.html">Accueil</a></li>
-              <li><a href="catalogue.html">Catalogue</a></li>
-              <li><a href="#" id="darkModeToggle"><i class="fas fa-moon"></i></a></li>
-          </ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="catalogue.html">Films</a></li>
+                <li><a href="series.html">Séries</a></li>
+                <li><a href="tv.html" class="active">Télévision</a></li>
+                <li><a href="#" id="darkModeToggle"><i class="fas fa-moon"></i></a></li>
+            </ul>
           <div class="search-container">
               <input type="text" id="searchInput" placeholder="Rechercher...">
               <button id="searchButton"><i class="fas fa-search"></i></button>
@@ -31,50 +33,29 @@
 
   <main>
       <div class="movie-detail-container">
-          <div class="movie-backdrop" style="background-image: url('BACKDROP_URL')">
+          <div class="movie-backdrop" style="background-image: url('https://yt3.googleusercontent.com/ytc/AIdro_nOBqjUEct-fVVkpkWUUeca64G4GD__OiHfBB6-AApGdX4=s900-c-k-c0x00ffffff-no-rj')">
             <div class="movie-poster-detail">
-              <img src="POSTER_URL" alt="TITRE_DU_FILM">
+              <img src="https://i.ibb.co/GfcBvjYB/canal.png" alt="Canal+">
             </div>
           </div>
           <div class="movie-info-detail">
-            <h1 class="movie-title-detail">TITRE_DU_FILM</h1>
+            <h1 class="movie-title-detail">Canal+</h1>
             <div class="movie-meta">
-              <span>ANNEE_DU_FILM</span>
+              <span>en direct</span>
               <span>•</span>
-              <span>DUREE_DU_FILM</span>
+              <span>HD</span>
               <span>•</span>
-              <span>Réalisé par REALISATEUR_DU_FILM</span>
-              <span>•</span>
-              <div class="movie-rating-detail">
-                <i class="fas fa-star"></i>
-                <span>NOTE_DU_FILM/10</span>
-              </div>
+              <span>Regarder Canal+</span>
             </div>
-            <div class="movie-categories">
-              CATEGORIES_DU_FILM
-            </div>
-            <div class="movie-description">
-              <p>DESCRIPTION_DU_FILM</p>
-            </div>
-            <div class="movie-actions">
-              <a href="#" class="watch-button" id="watchButton">
-                <i class="fas fa-play"></i>
-                Regarder
-              </a>
-              <a href="#" class="trailer-button" id="trailerButton">
-                <i class="fas fa-film"></i>
-                Bande-annonce
-              </a>
+            <div class="video-iframe-container">
+              <iframe 
+                src="https://play.frembed.site/api/player.php?id=40"
+                allowfullscreen 
+                allow="autoplay; encrypted-media">
+              </iframe>
             </div>
           </div>
       </div>
-
-      <section class="related-movies">
-          <h2 class="section-title">Films similaires</h2>
-          <div class="related-grid" id="relatedMovies">
-              <!-- Les films similaires seront chargés ici par JavaScript -->
-          </div>
-      </section>
   </main>
 
   <footer>

@@ -646,6 +646,14 @@ document.addEventListener("DOMContentLoaded", () => {
         categories: ["action", "comédie"],
       },
       {
+        id: "578",
+        title: "Les Dents de la mer",
+        poster: "https://image.tmdb.org/t/p/original/wuRf6gkX0JUJsu1MeECPubhMRdd.jpg",
+        rating: 7.7,
+        year: 1975,
+        categories: ["horreur", "thriller", "aventure"],
+      },
+      {
         id: "1261622",
         title: "Lune de miel avec ma mère",
         poster: "https://image.tmdb.org/t/p/original/bzW0afBIyWZ0bjCje8GPezvETy0.jpg",
@@ -660,6 +668,14 @@ document.addEventListener("DOMContentLoaded", () => {
         rating: 7.4,
         year: 2025,
         categories: ["aventure", "drame", "science-fiction"],
+      },
+      {
+        id: "44269",
+        title: "Tout ce qui brille",
+        poster: "https://image.tmdb.org/t/p/original/fzhdn6roB62p7AwkbisWxtysZSH.jpg",
+        rating: 6.7,
+        year: 2010,
+        categories: ["comédie"],
       },
       {
         id: "1152014",

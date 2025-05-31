@@ -598,6 +598,14 @@ document.addEventListener("DOMContentLoaded", () => {
         categories: ["action", "thriller", "crime"],
       },
       {
+        id: "13",
+        title: "Forrest Gump",
+        poster: "https://image.tmdb.org/t/p/original/A0Th0x8QIzP0njrFAJnYQ5ouIoB.jpg",
+        rating: 8.5,
+        year: 1994,
+        categories: ["comédie", "drame", "romance"],
+      },
+      {
         id: "27205",
         title: "Inception",
         poster: "https://image.tmdb.org/t/p/original/aej3LRUga5rhgkmRP6XMFw3ejbl.jpg",
@@ -628,6 +636,22 @@ document.addEventListener("DOMContentLoaded", () => {
         rating: 7.3,
         year: 2024,
         categories: ["romance", "crime", "drame"],
+      },
+      {
+        id: "137106",
+        title: "La Grande Aventure LEGO",
+        poster: "https://image.tmdb.org/t/p/original/dMzloXrcyNgNY3YPquJpKTntbK.jpg",
+        rating: 7.4,
+        year: 2014,
+        categories: ["comédie", "familial", "animation"],
+      },
+      {
+        id: "280217",
+        title: "La Grande Aventure LEGO 2",
+        poster: "https://image.tmdb.org/t/p/original/d2d6a2eJGNMFxpkrXYpKY9MYH6T.jpg",
+        rating: 6.7,
+        year: 2019,
+        categories: ["comédie", "familial", "animation"],
       },
       {
         id: "1084736",
